@@ -1,0 +1,30 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Webpack Build",
+			"program": "${workspaceFolder}/node_modules/.bin/webpack-cli",
+			"args": [
+				"--mode",
+				"development",
+				"--config",
+				"build/webpack.config.dev.js"
+			],
+			// 捕获打包信息，输出到控制台
+			"outputCapture": "std"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Webpack Dev Server",
+			"program": "${workspaceFolder}/bin/dev-server",
+			// 捕获打包信息，输出到控制台
+			"outputCapture": "std"
+		},
+	]
+}
