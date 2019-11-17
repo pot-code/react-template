@@ -1,5 +1,6 @@
 {
   "presets": [
+    "@babel/preset-typescript",
     [
       "@babel/preset-env",
       {
@@ -20,6 +21,7 @@
       "react-css-modules",
       {
         "generateScopedName": "[name]-[local]__[hash:base64:5]",
+        "webpackHotModuleReloading": true,
         "filetypes": {
           ".less": {
             "syntax": "postcss-less"

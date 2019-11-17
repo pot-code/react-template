@@ -83,7 +83,7 @@ module.exports = {
       loaders: [
         {
           loader: 'ts-loader',
-          options: { happyPackMode: true }
+          options: { transpileOnly: true, happyPackMode: true }
         },
         { loader: 'babel-loader' }
       ]
