@@ -1,4 +1,3 @@
-const os = require('os')
 const path = require('path')
 
 const HappyPack = require('happypack')
@@ -6,10 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
 const WebpackBar = require('webpackbar')
-const { DefinePlugin } = require('webpack')
 
 const { buildPath, templatePath, faviconPath, node_modules, src } = require('./path')
-const profile = !!process.env.PROFILE || false
 
 const postCSSLoaderConfig = {
   loader: 'postcss-loader',
@@ -48,6 +45,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
+        include: src,
         use: [
           {
             loader: 'style-loader',
@@ -72,7 +70,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        include: [...['normalize'].map(module => path.join(node_modules, module)), src],
         use: ['style-loader', 'css-loader', postCSSLoaderConfig]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'assets'
+        }
       }
     ]
   },

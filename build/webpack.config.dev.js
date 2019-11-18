@@ -1,13 +1,14 @@
-const baseConfig = require('./webpack.config');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const { HotModuleReplacementPlugin } = require('webpack');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const { HotModuleReplacementPlugin } = require('webpack')
+
+const baseConfig = require('./webpack.config')
 const merge = require('webpack-merge')
-const { buildPath } = require('./path');
+const { buildPath } = require('./path')
 
 module.exports = merge(baseConfig, {
   mode: 'development',
   entry: {
-    app: ['webpack-hot-middleware/client?path=__hmr', './src/index.tsx',]
+    app: ['webpack-hot-middleware/client?path=__hmr', './src/index.tsx']
   },
   resolve: {
     alias: {
@@ -19,6 +20,6 @@ module.exports = merge(baseConfig, {
   devServer: {
     contentBase: buildPath,
     quiet: true,
-    open: false,
+    open: false
   }
-});
+})
