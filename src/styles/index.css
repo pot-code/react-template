@@ -1,1 +1,4 @@
 /* global css rules */
+body {
+  font-family: 'PingFang SC', 'tahoma', 'Microsoft Yahei', 'helvetica', 'sans-serif';
+}
