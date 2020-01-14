@@ -6,9 +6,7 @@
     "module": "es6",
     "moduleResolution": "node",
     "target": "es6",
-    "typeRoots": [
-      "./src/typings"
-    ],
+    "esModuleInterop": true,
     "lib": [
       "dom",
       "es6"
