@@ -2,7 +2,7 @@ const path = require('path')
 
 const HappyPack = require('happypack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
 const WebpackBar = require('webpackbar')
 
@@ -48,20 +48,17 @@ module.exports = {
         include: src,
         use: [
           {
-            loader: 'style-loader',
-            options: {
-              // RHL 的使用会导致在添加 selector 时 hmr 失败。关闭 hmr，交给 RHL 处理可以解决问题
-              // ref:https://github.com/webpack-contrib/style-loader/issues/320
-              hmr: false
-            }
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
             options: {
-              modules: 'local',
-              importLoaders: 2, // 为了支持 CSS Modules，因为 css 里可能会使用 import
-              localIdentName: '[name]-[local]__[hash:base64:5]',
-              camelCase: 'dashes'
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]-[local]__[hash:base64:5]'
+              },
+              localsConvention: 'dashes',
+              importLoaders: 2 // 为了支持 CSS Modules，因为 css 里可能会使用 import
             }
           },
           postCSSLoaderConfig,
@@ -101,7 +98,7 @@ module.exports = {
       favicon: faviconPath
     }),
     new WebpackBar({
-      color: '#A06EE1'
+      color: '#c9753d'
     })
   ],
   optimization: {
