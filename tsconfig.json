@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "jsx": "react",
+    "jsx": "preserve",
     "sourceMap": true,
     "module": "es6",
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "esnext",
+    "types": [
+      "jest"
+    ],
     "esModuleInterop": true,
     "lib": [
       "dom",

@@ -1,6 +1,5 @@
 const path = require('path')
 
-const HappyPack = require('happypack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
@@ -40,7 +39,18 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['happypack/loader?id=tsx'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
+          },
+          {
+            loader: 'ts-loader',
+            options: { transpileOnly: true }
+          }
+        ],
         exclude: node_modules
       },
       {
@@ -81,16 +91,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HappyPack({
-      id: 'tsx',
-      loaders: [
-        {
-          loader: 'ts-loader',
-          options: { transpileOnly: true, happyPackMode: true }
-        },
-        { loader: 'babel-loader' }
-      ]
-    }),
     new HtmlWebpackPlugin({
       title: 'react-scaffold',
       inject: true,
