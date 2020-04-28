@@ -1,9 +1,15 @@
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const { HotModuleReplacementPlugin } = require('webpack')
 
-const baseConfig = require('./webpack.config')
+const { baseConfig, styleLoader } = require('./webpack.config')
 const merge = require('webpack-merge')
 const { buildPath } = require('./path')
+
+styleLoader[0].use.unshift({
+  loader: 'style-loader'
+})
+styleLoader[1].use.unshift('style-loader')
+baseConfig.module.rules.push(...styleLoader)
 
 module.exports = merge(baseConfig, {
   mode: 'development',

@@ -20,9 +20,14 @@
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-class-properties",
     [
+      // 此插件主要作用的是组件的 styleName 属性，将其转换为 className，并不影响 css 文件的生成，那是 css-loader 的工作
+      // 不能使用 LESS 的 &-- 或 &_、&- 等 root 类语法
       "react-css-modules",
       {
+        // 和 css-loader 配置相同
+        "context": "src",
         "generateScopedName": "[name]-[local]__[hash:base64:5]",
+        "handleMissingStyleName": "warn",
         "webpackHotModuleReloading": true,
         "filetypes": {
           ".less": {

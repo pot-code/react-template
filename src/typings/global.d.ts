@@ -14,3 +14,8 @@ declare module '*.svg' {
 }
 
 declare var require: any
+declare var process: {
+  env: {
+    NODE_ENV: String
+  }
+}

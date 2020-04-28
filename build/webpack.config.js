@@ -2,12 +2,13 @@ const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const svgToMiniDataURI = require('mini-svg-data-uri')
 const postcssPresetEnv = require('postcss-preset-env')
 const WebpackBar = require('webpackbar')
 
-const { buildPath, templatePath, faviconPath, node_modules, src } = require('./path')
+const { buildPath, templatePath, faviconPath, node_modules, srcPath } = require('./path')
 
-const postCSSLoaderConfig = {
+const postCSSLoader = {
   loader: 'postcss-loader',
   options: {
     ident: 'postcss',
@@ -19,21 +20,51 @@ const postCSSLoaderConfig = {
   }
 }
 
-module.exports = {
+exports.styleLoader = [
+  {
+    test: /\.less$/,
+    include: srcPath,
+    sideEffects: true,
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          modules: {
+            // context 一定要配置，localIdentName 要和 babelrc 里的相同，否则 css-loader
+            // 和 babel-loader 生成的类名不一致
+            context: srcPath,
+            localIdentName: '[name]-[local]__[hash:base64:5]'
+          },
+          importLoaders: 2 // css 里可能会使用 import
+        }
+      },
+      postCSSLoader,
+      'less-loader'
+    ]
+  },
+  {
+    test: /\.css$/,
+    sideEffects: true,
+    include: [...['normalize'].map(module => path.join(node_modules, module)), srcPath],
+    use: ['css-loader', postCSSLoader]
+  }
+]
+
+exports.baseConfig = {
   entry: {
     app: './src/index.tsx'
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
     alias: {
-      '@components': path.resolve(src, 'components'),
-      '@store': path.resolve(src, 'store')
+      '@components': path.resolve(srcPath, 'components'),
+      '@store': path.resolve(srcPath, 'store')
     }
   },
   output: {
     path: buildPath,
-    filename: '[name].js',
-    chunkFilename: '[name].js'
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[name].js'
   },
   module: {
     rules: [
@@ -46,6 +77,7 @@ module.exports = {
               cacheDirectory: true
             }
           },
+
           {
             loader: 'ts-loader',
             options: { transpileOnly: true }
@@ -54,37 +86,27 @@ module.exports = {
         exclude: node_modules
       },
       {
-        test: /\.less$/,
-        include: src,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                mode: 'local',
-                localIdentName: '[name]-[local]__[hash:base64:5]'
-              },
-              localsConvention: 'dashes',
-              importLoaders: 2 // 为了支持 CSS Modules，因为 css 里可能会使用 import
-            }
-          },
-          postCSSLoaderConfig,
-          'less-loader'
-        ]
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: 'img/[name].[hash:7].[ext]'
+        }
       },
       {
-        test: /\.css$/,
-        include: [...['normalize'].map(module => path.join(node_modules, module)), src],
-        use: ['style-loader', 'css-loader', postCSSLoaderConfig]
+        test: /\.svg$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: 'img/[name].[hash:7].[ext]',
+          generator: content => svgToMiniDataURI(content.toString())
+        }
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          outputPath: 'assets'
+          name: 'fonts/[name].[hash:7].[ext]'
         }
       }
     ]
@@ -92,29 +114,13 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'react-scaffold',
       inject: true,
       template: templatePath,
-      favicon: faviconPath
+      favicon: faviconPath,
+      filename: path.join(buildPath, 'index.html')
     }),
     new WebpackBar({
-      color: '#c9753d'
+      color: '#75CA69'
     })
-  ],
-  optimization: {
-    runtimeChunk: {
-      name: 'boostrap'
-    },
-    splitChunks: {
-      cacheGroups: {
-        vendors: false,
-        default: false,
-        vendor: {
-          chunks: 'all',
-          name: 'vendor',
-          test: /node_modules/
-        }
-      }
-    }
-  }
+  ]
 }
