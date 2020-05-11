@@ -1,30 +1,15 @@
 const path = require('path')
-
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const svgToMiniDataURI = require('mini-svg-data-uri')
 const postcssPresetEnv = require('postcss-preset-env')
-const WebpackBar = require('webpackbar')
+const { DefinePlugin } = require('webpack')
 
-const { buildPath, templatePath, faviconPath, node_modules, srcPath } = require('./path')
-
-const postCSSLoader = {
-  loader: 'postcss-loader',
-  options: {
-    ident: 'postcss',
-    plugins: () => [
-      postcssPresetEnv({
-        browsers: ['> 1%', 'last 2 versions', 'not ie <= 8']
-      })
-    ]
-  }
-}
+const { buildPath, node_modules, srcPath } = require('./path')
+// const { printLoader } = require('./debug')
+const { entry, html } = require('./entry')
 
 exports.styleLoader = [
   {
     test: /\.less$/,
     include: srcPath,
-    sideEffects: true,
     use: [
       {
         loader: 'css-loader',
@@ -38,89 +23,65 @@ exports.styleLoader = [
           importLoaders: 2 // css 里可能会使用 import
         }
       },
-      postCSSLoader,
+      // { loader: printLoader },
+      'postcss-loader',
       'less-loader'
     ]
   },
   {
     test: /\.css$/,
-    sideEffects: true,
-    include: [...['normalize'].map(module => path.join(node_modules, module)), srcPath],
-    use: ['css-loader', postCSSLoader]
+    include: [...[].map((module) => path.resolve(node_modules, module)), srcPath],
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1
+        }
+      },
+      'postcss-loader'
+    ]
   }
 ]
 
 exports.baseConfig = {
-  entry: {
-    app: './src/index.tsx'
-  },
+  entry,
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
     alias: {
       '@components': path.resolve(srcPath, 'components'),
-      '@store': path.resolve(srcPath, 'store')
+      '@store': path.resolve(srcPath, 'store'),
+      '@configs': path.resolve(srcPath, 'configs'),
+      '@src': srcPath
     }
-  },
-  output: {
-    path: buildPath,
-    filename: 'js/[name].js',
-    chunkFilename: 'js/[name].js'
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
+        exclude: /node_modules/,
+        sideEffects: false,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: true
+              cacheDirectory: true,
+              cacheCompression: false
             }
           },
-
+          // { loader: path.resolve(rootPath, 'build/print-loader.js') },
           {
             loader: 'ts-loader',
             options: { transpileOnly: true }
           }
-        ],
-        exclude: node_modules
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          name: 'img/[name].[hash:7].[ext]'
-        }
-      },
-      {
-        test: /\.svg$/,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          name: 'img/[name].[hash:7].[ext]',
-          generator: content => svgToMiniDataURI(content.toString())
-        }
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'fonts/[name].[hash:7].[ext]'
-        }
+        ]
       }
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: templatePath,
-      favicon: faviconPath,
-      filename: path.join(buildPath, 'index.html')
-    }),
-    new WebpackBar({
-      color: '#75CA69'
+    ...html,
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.BUILD_STAGE': JSON.stringify(process.env.BUILD_STAGE)
     })
   ]
 }

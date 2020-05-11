@@ -21,6 +21,12 @@
       ],
       "@stores/*": [
         "src/store/*"
+      ],
+      "@configs/*": [
+        "src/configs/*"
+      ],
+      "@src/*": [
+        "src/*"
       ]
     }
   },

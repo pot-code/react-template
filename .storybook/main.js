@@ -1,5 +1,4 @@
-const projectWebpackConfig = require('../build/webpack.config')
-const HappyPack = require('happypack')
+const projectWebpackConfig = require('../build/webpack.config.dev')
 
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
@@ -9,20 +8,9 @@ module.exports = {
     '@storybook/addon-links/register',
     '@storybook/addon-backgrounds/register'
   ],
-  webpackFinal: async config => {
-    config.plugins.push(
-      new HappyPack({
-        id: 'tsx',
-        loaders: [
-          {
-            loader: 'ts-loader',
-            options: { transpileOnly: true, happyPackMode: true }
-          },
-          { loader: 'babel-loader' }
-        ]
-      })
-    )
+  webpackFinal: async (config) => {
     config.resolve.extensions.push('.ts', '.tsx')
+    config.resolve.alias = { ...config.resolve.alias, ...projectWebpackConfig.resolve.alias }
     return {
       ...config,
       module: { ...config.module, rules: projectWebpackConfig.module.rules }
