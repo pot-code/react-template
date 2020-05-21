@@ -10,6 +10,7 @@
 
 - storybook
 - CSS Modules
+- React hooks form
 - HMR
 - Jest intergration，支持 ES6 导入语法
 - TailwindCSS
