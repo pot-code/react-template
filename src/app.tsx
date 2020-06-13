@@ -1,13 +1,8 @@
-import * as React from 'react'
+import React from 'react'
 import axois from 'axios'
 import { hot } from 'react-hot-loader/root'
 
 import './app.less'
-import serve from './mock/'
-
-if (process.env.NODE_ENV === 'development') {
-  serve()
-}
 
 interface IUser {
   id: number

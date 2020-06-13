@@ -16,5 +16,6 @@
 - TailwindCSS
 - PurgeCSS
 - LESS support
+- Framer motion 动效
 - Typescript
 - MirageJS mock，无需额外后端服务器，根据环境变量开关
