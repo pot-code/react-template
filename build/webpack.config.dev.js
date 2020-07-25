@@ -5,7 +5,7 @@ const { HotModuleReplacementPlugin } = require('webpack')
 
 const { baseConfig, styleLoader } = require('./webpack.config')
 const { devEntry: entry } = require('./entry')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const { buildPath } = require('./path')
 
 styleLoader[0].use.unshift({

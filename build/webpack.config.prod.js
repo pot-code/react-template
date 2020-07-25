@@ -1,11 +1,10 @@
-const path = require('path')
-const glob = require('glob')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const svgToMiniDataURI = require('mini-svg-data-uri')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const { merge } = require('webpack-merge')
 
 const { baseConfig, styleLoader } = require('./webpack.config')
 const { buildPath, srcPath } = require('./path')
@@ -45,7 +44,7 @@ baseConfig.module.rules.push(
         options: {
           limit: 8192,
           name: 'img/[name].[hash:7].[ext]',
-          generator: content => svgToMiniDataURI(content.toString())
+          generator: (content) => svgToMiniDataURI(content.toString())
         }
       }
     ]
@@ -59,8 +58,7 @@ baseConfig.module.rules.push(
   }
 )
 
-module.exports = {
-  ...baseConfig,
+module.exports = merge(baseConfig, {
   mode: 'production',
   output: {
     path: buildPath,
@@ -81,4 +79,4 @@ module.exports = {
       }
     }
   }
-}
+})
