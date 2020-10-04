@@ -21,7 +21,7 @@ baseConfig.plugins.push(
   }),
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',
-    openAnalyzer: false
+    openAnalyzer: true
   }),
   new CleanWebpackPlugin()
 )
@@ -67,7 +67,12 @@ module.exports = merge(baseConfig, {
   },
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()],
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false
+      }),
+      new OptimizeCSSAssetsPlugin()
+    ],
     usedExports: true,
     splitChunks: {
       cacheGroups: {
