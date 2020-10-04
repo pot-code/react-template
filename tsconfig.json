@@ -7,30 +7,21 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "target": "esnext",
-    "types": [
-      "jest"
-    ],
     "esModuleInterop": true,
     "lib": [
       "dom",
       "es6"
     ],
     "paths": {
-      "@components/*": [
+      "Components/*": [
         "src/components/*"
       ],
-      "@stores/*": [
-        "src/store/*"
-      ],
-      "@configs/*": [
+      "Configs/*": [
         "src/configs/*"
-      ],
-      "@src/*": [
-        "src/*"
       ]
     }
   },
   "include": [
-    "src/**/*",
+    "src/**/*"
   ]
 }

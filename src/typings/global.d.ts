@@ -1,6 +1,6 @@
 declare module '*.less' {
-  const content: { [className: string]: string };
-  export = content;
+  const content: { [className: string]: string }
+  export = content
 }
 
 declare module '*.png' {
@@ -8,8 +8,11 @@ declare module '*.png' {
   export default content
 }
 
+declare type ReactSVG = React.FunctionComponent<React.SVGAttributes<SVGElement>>
+
 declare module '*.svg' {
   const content: any
+  export var ReactComponent: ReactSVG
   export default content
 }
 

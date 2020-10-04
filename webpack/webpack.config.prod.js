@@ -7,7 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const { merge } = require('webpack-merge')
 
 const { baseConfig, styleLoader } = require('./webpack.config')
-const { buildPath, srcPath } = require('./path')
+const { paths } = require('./config')
 
 styleLoader[0].use.unshift({
   loader: MiniCssExtractPlugin.loader
@@ -61,7 +61,7 @@ baseConfig.module.rules.push(
 module.exports = merge(baseConfig, {
   mode: 'production',
   output: {
-    path: buildPath,
+    path: paths.build,
     filename: 'js/[name].[contenthash].js',
     chunkFilename: 'js/[name].[contenthash].js'
   },
@@ -71,10 +71,11 @@ module.exports = merge(baseConfig, {
     usedExports: true,
     splitChunks: {
       cacheGroups: {
-        vendor: {
+        styles: {
+          name: 'main',
+          test: /\.(sass|s?css)$/,
           chunks: 'all',
-          name: 'vendor',
-          test: /node_modules/
+          enforce: true
         }
       }
     }

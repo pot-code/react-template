@@ -2,9 +2,7 @@ import React from 'react'
 import axois from 'axios'
 import { hot } from 'react-hot-loader/root'
 
-import './app.less'
-
-interface IUser {
+type UserData = {
   id: number
   first_name: string
   last_name: string
@@ -14,7 +12,7 @@ interface IUser {
 }
 
 function App() {
-  const [users, setUsers] = React.useState<IUser[]>([])
+  const [users, setUsers] = React.useState<UserData[]>([])
 
   React.useEffect(() => {
     axois.get('/api/user').then((res) => {

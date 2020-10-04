@@ -1,21 +1,20 @@
-# 使用
+# Usage
 
-## 注意事项
+## Prerequisites
 
-- 首次使用时，需要对 husky 进行再安装以让其生效
-- LESS 里不能使用 BEM 功能，必须显式指定类名
-- ts/tsx 模块加载设置了 `sideEffects: false`， 可能会导致某些导入不正常
+- run `npm i -D husky`/`yarn add -D husky` first
 
-## 功能
+## Integrations
 
+- axios
 - storybook
 - CSS Modules
 - React hooks form
 - HMR
-- Jest intergration，支持 ES6 导入语法
+- Jest + RTL(react-testing-library)
 - TailwindCSS
 - PurgeCSS
-- LESS support
-- Framer motion 动效
+- SCSS support
+- Framer motion
 - Typescript
-- MirageJS mock，无需额外后端服务器，根据环境变量开关
+- MirageJS mock

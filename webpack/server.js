@@ -9,8 +9,8 @@ const { stripIndent } = require('common-tags')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const app = express()
-const config = require('../../build/webpack.config.dev')
-const { print_banner, create_uri, to_network_table, get_network_address, once } = require('./utils')
+const config = require('./webpack.config.dev')
+const { print_banner, create_uri, to_network_table, get_network_address } = require('./utils')
 
 const DEFAULT_PORT = 8080
 const publicPath = config.devServer.publicPath || '/'
@@ -20,7 +20,7 @@ const proxy = config.devServer.proxy
 portfinder.basePort = config.devServer.port || DEFAULT_PORT
 
 if (proxy) {
-  proxyType = typeofString(proxy)
+  let proxyType = typeofString(proxy)
   if (proxyType === '[object Object]') {
     Object.keys(proxy).forEach((path) => {
       const value = proxy[path]
@@ -50,7 +50,7 @@ if (proxy) {
 app.use(
   devMiddleware(compiler, {
     publicPath,
-    logLevel: 'silent',
+    logLevel: 'error',
     methods: ['GET', 'HEAD', 'POST', 'PUT'],
     watchOptions: {
       aggregateTimeout: 600
@@ -83,7 +83,7 @@ async function start_server() {
       boxen(stripIndent` ${chalk.green('Dev server started')}\n\n${to_network_table(urls)} `, {
         borderColor: 'blueBright',
         padding: 1,
-        borderStyle: 'round'
+        borderStyle: 'double'
       })
     )
   })

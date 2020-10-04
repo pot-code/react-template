@@ -36,8 +36,8 @@
         "handleMissingStyleName": "warn",
         "webpackHotModuleReloading": true,
         "filetypes": {
-          ".less": {
-            "syntax": "postcss-less"
+          ".scss": {
+            "syntax": "postcss-scss"
           }
         }
       }

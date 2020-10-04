@@ -1,21 +1,21 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
-const { buildPath, templatePath, rootPath } = require('./path')
+const { paths } = require('./config')
 
 const config = [
   {
     name: 'app',
     chunks: ['app', 'vendor'],
     entryPoint: './src/index.tsx',
-    template: path.resolve(templatePath, 'app.html'),
-    favicon: path.resolve(rootPath, 'favicon.ico'),
-    htmlOutput: path.resolve(buildPath, 'index.html')
-  },
+    template: path.resolve(paths.template, 'app.html'),
+    favicon: path.resolve(paths.project_root, 'favicon.ico'),
+    htmlOutput: path.resolve(paths.build, 'index.html')
+  }
 ]
 
 function buildEntries(def) {
-  const html = def.map(item => {
+  const html = def.map((item) => {
     const { template, chunks, favicon, htmlOutput: filename } = item
 
     return new HtmlWebpackPlugin({

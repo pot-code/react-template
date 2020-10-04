@@ -1,4 +1,3 @@
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const { HotModuleReplacementPlugin } = require('webpack')
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
@@ -6,7 +5,7 @@ const { HotModuleReplacementPlugin } = require('webpack')
 const { baseConfig, styleLoader } = require('./webpack.config')
 const { devEntry: entry } = require('./entry')
 const { merge } = require('webpack-merge')
-const { buildPath } = require('./path')
+const { paths } = require('./config')
 
 styleLoader[0].use.unshift({
   loader: 'style-loader'
@@ -23,20 +22,19 @@ module.exports = merge(baseConfig, {
     }
   },
   output: {
-    path: buildPath,
+    path: paths.build,
     filename: '[name].js',
     chunkFilename: '[name].js'
   },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
-    new FriendlyErrorsWebpackPlugin(),
     new HotModuleReplacementPlugin(),
     new WebpackBar({
       color: '#75CA69'
     })
   ],
   devServer: {
-    contentBase: buildPath,
+    contentBase: paths.build,
     quiet: true,
     open: false
   },

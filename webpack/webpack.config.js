@@ -1,22 +1,21 @@
 const path = require('path')
 const { DefinePlugin } = require('webpack')
 
-const { buildPath, node_modules, srcPath } = require('./path')
+const { paths } = require('./config')
 // const { printLoader } = require('./debug')
 const { entry, html } = require('./entry')
 
 exports.styleLoader = [
   {
-    test: /\.less$/,
-    include: srcPath,
+    test: /\.scss$/,
+    include: paths.src,
     use: [
       {
         loader: 'css-loader',
         options: {
           modules: {
-            // context 一定要配置，localIdentName 要和 babelrc 里的相同，否则 css-loader
-            // 和 babel-loader 生成的类名不一致
-            context: srcPath,
+            // WARN: sync with .babelrc react-css-modules
+            context: paths.src,
             localIdentName: '[name]-[local]__[hash:base64:5]'
           },
           importLoaders: 2 // css 里可能会使用 import
@@ -24,12 +23,12 @@ exports.styleLoader = [
       },
       // { loader: printLoader },
       'postcss-loader',
-      'less-loader'
+      'sass-loader'
     ]
   },
   {
     test: /\.css$/,
-    include: [...[].map((module) => path.resolve(node_modules, module)), srcPath],
+    include: [paths.src],
     use: [
       {
         loader: 'css-loader',
@@ -46,11 +45,10 @@ exports.baseConfig = {
   entry,
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
+    // WARN: sync with tsconfig.json paths
     alias: {
-      '@components': path.resolve(srcPath, 'components'),
-      '@store': path.resolve(srcPath, 'store'),
-      '@configs': path.resolve(srcPath, 'configs'),
-      '@src': srcPath
+      Components: path.resolve(paths.src, 'components'),
+      Configs: path.resolve(paths.src, 'configs')
     }
   },
   module: {

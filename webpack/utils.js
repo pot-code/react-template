@@ -3,65 +3,7 @@ const chalk = require('chalk')
 const fs = require('fs')
 const path = require('path')
 const url = require('url')
-const prettyBytes = require('pretty-bytes')
 const os = require('os')
-
-const ASSETS_TABLE_HEADER = ['Asset', 'Size', 'Chunks', 'Chunk Names', 'Emitted'].map(text => chalk.gray.bold(text))
-const SIZE_ALERT_THRESHOLD = 2097152 //2MB
-const SIZE_WARNING_THRESHOLD = 1048576 //1MB
-
-const assetVisitor = {
-  name: function(name) {
-    return chalk.bold.green(name)
-  },
-  size: function(size) {
-    const sizeStr = prettyBytes(size)
-
-    // highlight large file size
-    if (size > SIZE_ALERT_THRESHOLD) {
-      return chalk.red(sizeStr)
-    }
-    if (size > SIZE_WARNING_THRESHOLD) {
-      return chalk.yellow(sizeStr)
-    }
-    return sizeStr
-  },
-  chunks: function(chunks) {
-    return chalk.bold(chunks.join(' '))
-  },
-  emitted: function(emitted) {
-    return emitted ? chalk.green.bold('true') : ''
-  },
-  chunkNames: function(chunkNames) {
-    return chunkNames.join(' ')
-  }
-}
-
-function assets_table(assets) {
-  const table_config = {
-    border: getBorderCharacters('norc')
-  }
-  const body = assets
-    .filter(asset => !asset.name.includes('hot-update'))
-    .map(asset =>
-      Object.keys(asset)
-        .filter(prop => prop in assetVisitor)
-        .map(prop => assetVisitor[prop](asset[prop]))
-    )
-
-  return table([ASSETS_TABLE_HEADER, ...body], table_config)
-}
-
-function print_assets_table(stats) {
-  const { assets } = stats.toJson({
-    all: false,
-    assets: true
-  })
-
-  if (!stats.hasErrors() && !stats.hasWarnings()) {
-    console.log(assets_table(assets))
-  }
-}
 
 function to_network_table(addresses) {
   const table_config = {
@@ -126,7 +68,6 @@ function once(fn) {
 module.exports = {
   print_banner,
   create_uri,
-  print_assets_table,
   to_network_table,
   get_network_address,
   once
