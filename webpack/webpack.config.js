@@ -47,8 +47,9 @@ exports.baseConfig = {
     extensions: ['.js', '.ts', '.tsx', '.json'],
     // WARN: sync with tsconfig.json paths
     alias: {
-      Components: path.resolve(paths.src, 'components'),
-      Configs: path.resolve(paths.src, 'configs')
+      '@components': path.resolve(paths.src, 'components'),
+      '@configs': path.resolve(paths.src, 'configs'),
+      '@src': paths.src
     }
   },
   module: {

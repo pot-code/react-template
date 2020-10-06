@@ -1,6 +1,5 @@
 const WebpackBar = require('webpackbar')
 const { HotModuleReplacementPlugin } = require('webpack')
-// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
 const { baseConfig, styleLoader } = require('./webpack.config')
 const { devEntry: entry } = require('./entry')

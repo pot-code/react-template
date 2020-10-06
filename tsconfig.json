@@ -13,11 +13,14 @@
       "es6"
     ],
     "paths": {
-      "Components/*": [
+      "@components/*": [
         "src/components/*"
       ],
-      "Configs/*": [
+      "@configs/*": [
         "src/configs/*"
+      ],
+      "@src/*": [
+        "src/*"
       ]
     }
   },

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 
-import serve from './mock'
+import serve from '@src/mock'
 import App from './app'
 
 beforeEach(() => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-import App from './app'
+import App from '@components/App/app'
 import serve from './mock/'
 
 import './styles/index.css'
