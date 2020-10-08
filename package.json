@@ -10,6 +10,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@fullhuman/postcss-purgecss": "^2.1.2",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-backgrounds": "^6.0.21",
     "@storybook/addon-knobs": "^6.0.21",
@@ -49,7 +50,7 @@
     "postcss-preset-env": "^6.6.0",
     "postcss-scss": "^3.0.2",
     "prettier": "^2.0.5",
-    "react-hot-loader": "^4.13.0",
+    "react-refresh": "^0.8.3",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.1.2",
@@ -83,7 +84,6 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@hot-loader/react-dom": "^16.8.6",
     "axios": "^0.20.0",
     "framer-motion": "^2.7.7",
     "react": "^16.8.6",

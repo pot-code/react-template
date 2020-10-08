@@ -1,6 +1,5 @@
 import React from 'react'
 import axois from 'axios'
-import { hot } from 'react-hot-loader/root'
 
 type UserData = {
   id: number
@@ -36,4 +35,4 @@ function App() {
   )
 }
 
-export default hot(App)
+export default App

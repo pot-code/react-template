@@ -10,7 +10,7 @@
 - storybook
 - CSS Modules
 - React hooks form
-- HMR
+- HMR(Fast Refresh)
 - Jest + RTL(react-testing-library)
 - TailwindCSS
 - PurgeCSS

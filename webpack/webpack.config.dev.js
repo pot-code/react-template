@@ -1,5 +1,6 @@
 const WebpackBar = require('webpackbar')
 const { HotModuleReplacementPlugin } = require('webpack')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const { baseConfig, styleLoader } = require('./webpack.config')
 const { devEntry: entry } = require('./entry')
@@ -15,11 +16,6 @@ styleLoader[1].use.unshift('style-loader')
 module.exports = merge(baseConfig, {
   entry,
   mode: 'development',
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    }
-  },
   output: {
     path: paths.build,
     filename: '[name].js',
@@ -27,6 +23,7 @@ module.exports = merge(baseConfig, {
   },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
+    new ReactRefreshWebpackPlugin(),
     new HotModuleReplacementPlugin(),
     new WebpackBar({
       color: '#75CA69'
