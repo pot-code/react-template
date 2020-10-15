@@ -1,27 +1,24 @@
 const path = require('path')
 const { DefinePlugin } = require('webpack')
 
-const { paths } = require('./config')
-// const { printLoader } = require('./debug')
+const { paths, css_module } = require('./config')
 const { entry, html } = require('./entry')
 
-exports.styleLoader = [
+exports.style_loader = [
   {
-    test: /\.scss$/,
+    test: /\.s(c|a)ss$/,
     include: paths.src,
     use: [
       {
         loader: 'css-loader',
         options: {
           modules: {
-            // WARN: sync with .babelrc react-css-modules
             context: paths.src,
-            localIdentName: '[name]-[local]__[hash:base64:5]'
+            localIdentName: css_module.pattern
           },
-          importLoaders: 2 // css 里可能会使用 import
+          importLoaders: 2
         }
       },
-      // { loader: printLoader },
       'postcss-loader',
       'sass-loader'
     ]
@@ -41,7 +38,7 @@ exports.styleLoader = [
   }
 ]
 
-exports.baseConfig = {
+exports.base = {
   entry,
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
@@ -66,7 +63,6 @@ exports.baseConfig = {
               cacheCompression: false
             }
           },
-          // { loader: path.resolve(rootPath, 'build/print-loader.js') },
           {
             loader: 'ts-loader',
             options: { transpileOnly: true }
@@ -78,8 +74,7 @@ exports.baseConfig = {
   plugins: [
     ...html,
     new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.BUILD_STAGE': JSON.stringify(process.env.BUILD_STAGE)
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 }

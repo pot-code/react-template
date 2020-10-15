@@ -42,26 +42,30 @@ enum HttpStatus {
 Axios.defaults.baseURL = 'http://' + baseURL
 Axios.defaults.withCredentials = true
 Axios.defaults.timeout = 30 * 1e3 // 30 sec to timeout
-Axios.interceptors.response.use(res => {
-  return res.data
-}, err => {
-  if (err.response) {
-    const response = err.response
-    // rest error
-    return Promise.reject(response.data.error)
-  } else if (err.request) {
-    //
+Axios.interceptors.response.use(
+  (res) => {
+    return res.data
+  },
+  (err) => {
+    if (err.response) {
+      const response = err.response
+      // rest error
+      return Promise.reject(response.data.error)
+    } else if (err.request) {
+      //
+    }
+    return Promise.reject({
+      message: err.message,
+      meta: err
+    })
   }
-  return Promise.reject({
-    message: err.message,
-    meta: err
-  })
-})
+)
 
 const AxiosWithRedirect = Axios.create()
-AxiosWithRedirect.interceptors.response.use((res) => {
-  return res.data
-},
+AxiosWithRedirect.interceptors.response.use(
+  (res) => {
+    return res.data
+  },
   (err) => {
     if (err.response) {
       const response = err.response

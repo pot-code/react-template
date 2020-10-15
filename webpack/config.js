@@ -7,3 +7,7 @@ module.exports.paths = {
   template: path.resolve(__dirname, '../template'),
   tsconfig: path.resolve(__dirname, '../tsconfig.json')
 }
+
+module.exports.css_module = {
+  pattern: '[name]-[local]__[hash:base64:5]'
+}

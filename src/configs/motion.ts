@@ -104,7 +104,7 @@ class MotionTimeline {
   public build(): { [key: string]: Variants } {
     const { length, variants, offsets, durations } = this
 
-    Object.keys(variants).forEach(k => {
+    Object.keys(variants).forEach((k) => {
       const variant = variants[k]
 
       if (variant[MotionVariantStage.EXIT]) {

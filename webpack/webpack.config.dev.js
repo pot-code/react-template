@@ -1,19 +1,18 @@
 const WebpackBar = require('webpackbar')
 const { HotModuleReplacementPlugin } = require('webpack')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
-const { baseConfig, styleLoader } = require('./webpack.config')
+const { base, style_loader } = require('./webpack.config')
+const package = require('../package.json')
 const { devEntry: entry } = require('./entry')
 const { merge } = require('webpack-merge')
 const { paths } = require('./config')
 
-styleLoader[0].use.unshift({
-  loader: 'style-loader'
-})
-styleLoader[1].use.unshift('style-loader')
+style_loader[0].use.unshift('style-loader')
+style_loader[1].use.unshift('style-loader')
 
 // const smp = new SpeedMeasurePlugin()
-module.exports = merge(baseConfig, {
+module.exports = merge(base, {
   entry,
   mode: 'development',
   output: {
@@ -36,9 +35,9 @@ module.exports = merge(baseConfig, {
   },
   module: {
     rules: [
-      ...styleLoader,
+      ...style_loader,
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)$/,
         loader: 'url-loader'
       },
       {
@@ -46,7 +45,7 @@ module.exports = merge(baseConfig, {
         use: ['@svgr/webpack', 'url-loader']
       },
       {
-        test: /\.(eot|ttf|woff|woff2)$/,
+        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)$/,
         loader: 'file-loader'
       }
     ]
