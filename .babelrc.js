@@ -9,6 +9,8 @@ module.exports = {
     [
       '@babel/preset-env',
       {
+        loose: true,
+        shippedProposals: true,
         targets: {
           browsers: ['> 1%', 'last 2 versions', 'not ie <= 8']
         }
@@ -18,7 +20,12 @@ module.exports = {
   plugins: [
     ...[is_dev_env && 'react-refresh/babel'].filter(Boolean),
     '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-proposal-class-properties',
+    [
+      '@babel/plugin-proposal-class-properties',
+      {
+        loose: true
+      }
+    ],
     [
       '@babel/plugin-transform-runtime',
       {
@@ -28,7 +35,6 @@ module.exports = {
     [
       'react-css-modules',
       {
-        // WARN: sync with frontend src path
         context: paths.src,
         generateScopedName: is_test_env ? '[local]' : css_module.pattern,
         handleMissingStyleName: 'warn',

@@ -12,10 +12,10 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@fullhuman/postcss-purgecss": "^2.1.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
-    "@storybook/addon-actions": "^6.0.26",
-    "@storybook/addon-essentials": "^6.0.26",
-    "@storybook/addon-links": "^6.0.26",
-    "@storybook/react": "^6.0.26",
+    "@storybook/addon-actions": "^6.1.4",
+    "@storybook/addon-essentials": "^6.1.4",
+    "@storybook/addon-links": "^6.1.4",
+    "@storybook/react": "^6.1.4",
     "@svgr/webpack": "^5.4.0",
     "@testing-library/react": "^11.1.0",
     "@types/classnames": "^2.2.7",
@@ -49,7 +49,7 @@
     "postcss-preset-env": "^6.6.0",
     "postcss-scss": "^3.0.2",
     "prettier": "^2.0.5",
-    "react-refresh": "^0.8.3",
+    "react-refresh": "^0.9.0",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "style-loader": "^2.0.0",
@@ -84,12 +84,12 @@
     "storybook:docs": "build-storybook --docs"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "framer-motion": "^2.9.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
-    "tailwindcss": "^1.9.2"
+    "tailwindcss": "^2.0.1"
   },
   "lint-staged": {
     "*.{tsx, ts}": [
