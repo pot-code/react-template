@@ -1,95 +1,145 @@
 {
   "name": "react-boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "axios": "^0.21.1",
+    "classnames": "^2.3.1",
+    "framer-motion": "^4.1.17",
+    "i18next": "^20.4.0",
+    "react": "^17.0.2",
+    "react-content-loader": "^6.0.3",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.4",
+    "react-icons": "^4.2.0",
+    "react-query": "^3.19.6",
+    "react-router-dom": "^5.2.0",
+    "react-use": "^17.2.4",
+    "typescript": "^4.3.5",
+    "web-vitals": "^1.1.2",
+    "zustand": "^3.5.9"
+  },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.8.3",
-    "@babel/preset-typescript": "^7.8.3",
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@fullhuman/postcss-purgecss": "^2.1.2",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
-    "@storybook/addon-actions": "^6.1.4",
-    "@storybook/addon-essentials": "^6.1.4",
-    "@storybook/addon-links": "^6.1.4",
-    "@storybook/react": "^6.1.4",
-    "@svgr/webpack": "^5.4.0",
-    "@testing-library/react": "^11.1.0",
-    "@types/classnames": "^2.2.7",
-    "@types/jest": "^26.0.13",
-    "@types/react": "^16.9.52",
-    "@types/react-css-modules": "^4.6.2",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-router-dom": "^5.1.6",
-    "@types/storybook__react": "^5.2.1",
-    "babel-jest": "^26.5.2",
-    "babel-loader": "^8.0.5",
-    "babel-plugin-react-css-modules": "^5.2.6",
-    "boxen": "^4.2.0",
-    "chalk": "^4.1.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "common-tags": "^1.8.0",
-    "css-loader": "3.6.0",
-    "express": "^4.16.4",
-    "file-loader": "^6.0.0",
-    "html-webpack-plugin": "^4.5.0",
-    "http-proxy-middleware": "^1.0.3",
-    "jest": "^26.0.1",
-    "lint-staged": "^10.4.0",
-    "mini-css-extract-plugin": "^1.0.0",
-    "mini-svg-data-uri": "^1.1.3",
-    "miragejs": "^0.1.41",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "portfinder": "^1.0.20",
-    "postcss": "^8.1.1",
-    "postcss-loader": "^4.0.3",
-    "postcss-preset-env": "^6.6.0",
-    "postcss-scss": "^3.0.2",
-    "prettier": "^2.0.5",
-    "react-refresh": "^0.9.0",
-    "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
-    "style-loader": "^2.0.0",
-    "table": "^6.0.3",
-    "terser-webpack-plugin": "^4.2.2",
-    "ts-loader": "^8.0.4",
-    "tslint": "^6.1.2",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-loader": "^3.5.4",
-    "tslint-react": "^5.0.0",
-    "typescript": "^4.0.3",
-    "url-loader": "^4.1.0",
-    "webpack": "^4.44.2",
-    "webpack-bundle-analyzer": "^3.9.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-middleware": "^3.6.2",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-hot-middleware": "^2.24.4",
-    "webpack-log": "^3.0.1",
-    "webpack-merge": "^5.1.4",
-    "webpackbar": "^4.0.0"
+    "@babel/core": "^7.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.24",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "esbuild-darwin-64": "^0.12.24",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.3.2",
+    "rollup-plugin-visualizer": "^5.5.2",
+    "vite": "^2.5.1",
+    "vite-tsconfig-paths": "^3.3.13"
   },
   "scripts": {
-    "dev": "NODE_ENV=development node bin/dev-server",
-    "dev:union": "NODE_ENV=union node bin/dev-server",
+    "dev": "vite",
+    "build": "vite build",
     "test": "jest",
-    "build": "NODE_ENV=production webpack-cli --config webpack/webpack.config.prod.js",
-    "clear:babel-cache": "/bin/rm -rf ./node_modules/.cache/babel-loader/*",
-    "lint": "tslint -t codeFrame -p ./ --fix",
-    "storybook": "NODE_ENV=storybook start-storybook -p 6006",
-    "storybook:build": "build-storybook",
-    "storybook:docs": "build-storybook --docs"
+    "test:watch": "jest --watch",
+    "serve": "vite preview",
+    "sb": "start-storybook -p 6006",
+    "build:sb": "build-storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
-  "dependencies": {
-    "axios": "^0.21.0",
-    "framer-motion": "^2.9.1",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-router-dom": "^5.2.0",
-    "tailwindcss": "^2.0.1"
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "airbnb-typescript",
+      "plugin:react-hooks/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "ignorePatterns": [
+      "*.config.ts"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-underscore-dangle": "warn",
+      "no-param-reassign": "off",
+      "no-bitwise": "off",
+      "no-plusplus": "off",
+      "no-unused-vars": "warn",
+      "react/jsx-props-no-spreading": "off",
+      "react/no-array-index-key": "warn",
+      "@typescript-eslint/no-unused-vars": "off",
+      "import/extensions": "off",
+      "import/prefer-default-export": "off",
+      "import/no-extraneous-dependencies": "off",
+      "jsx-a11y/click-events-have-key-events": "warn",
+      "jsx-a11y/no-static-element-interactions": "warn",
+      "jsx-a11y/mouse-events-have-key-events": "warn"
+    }
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
+    "resetMocks": true
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "react-app"
+        ]
+      }
+    }
+  },
+  "bowserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "lint-staged": {
     "*.{tsx, ts}": [

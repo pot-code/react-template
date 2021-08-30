@@ -1,30 +1,31 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "jsx": "preserve",
-    "sourceMap": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "target": "ESNext",
-    "esModuleInterop": true,
+    "target": "es5",
     "lib": [
       "dom",
-      "es6"
+      "dom.iterable",
+      "esnext"
     ],
-    "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@configs/*": [
-        "src/configs/*"
-      ],
-      "@src/*": [
-        "src/*"
-      ]
-    }
+    "types": [
+      "@emotion/react/types/css-prop",
+      "vite/client"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
   "include": [
-    "src/**/*"
-  ]
+    "src"
+  ],
 }

@@ -1,8 +1,0 @@
-/* global css rules */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-body {
-  font-family: 'PingFang SC', 'tahoma', 'Microsoft Yahei', 'helvetica', 'sans-serif';
-}

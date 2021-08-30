@@ -1,20 +1,15 @@
 # Usage
 
-## Prerequisites
+## Prepare
 
-- run `npm i -D husky`/`yarn add -D husky` first
+- `npm i -D husky`/`yarn add -D husky`
 
-## Integrations
+## Features
 
 - axios
-- storybook
-- CSS Modules
-- React hooks form
-- HMR(Fast Refresh)
+- zustand
+- Vite
 - Jest + RTL(react-testing-library)
-- TailwindCSS
-- PurgeCSS
-- SCSS support
+- @emotion/react
 - Framer motion
 - Typescript
-- MirageJS mock
