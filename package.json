@@ -57,9 +57,7 @@
     "test:watch": "jest --watch",
     "serve": "vite preview",
     "sb": "start-storybook -p 6006",
-    "build:sb": "build-storybook",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "sb:build": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
