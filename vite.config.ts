@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import { visualizer } from "rollup-plugin-visualizer";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -8,13 +7,7 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
-  plugins: [
-    react(),
-    tsconfigPaths(),
-    visualizer({
-      template: "sunburst",
-    }),
-  ],
+  plugins: [react(), tsconfigPaths()],
   esbuild: {
     jsxFactory: `jsx`,
     jsxInject: `import { jsx } from '@emotion/react'`,
