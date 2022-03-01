@@ -46,7 +46,6 @@ specifiers:
   vite: ^2.8.5
   vite-tsconfig-paths: ^3.4.1
   web-vitals: ^2.1.4
-  zustand: ^3.7.1
 
 dependencies:
   '@emotion/react': 11.8.1_7c3ecd89bd75b61b41f2029715ea2305
@@ -65,7 +64,6 @@ dependencies:
   react-router-dom: 5.3.0_react@17.0.2
   react-use: 17.3.2_react-dom@17.0.2+react@17.0.2
   web-vitals: 2.1.4
-  zustand: 3.7.1_react@17.0.2
 
 devDependencies:
   '@babel/core': 7.17.5
@@ -5384,15 +5382,3 @@ packages:
       y18n: 5.0.8
       yargs-parser: 21.0.1
     dev: true
-
-  /zustand/3.7.1_react@17.0.2:
-    resolution: {integrity: sha512-wHBCZlKj+bg03/hP+Tzv24YhnqqP8MCeN9ECPDXoF01062SIbnfl3j9O0znkDw1lNTY0a8WN3F///a0UhhaEqg==}
-    engines: {node: '>=12.7.0'}
-    peerDependencies:
-      react: '>=16.8'
-    peerDependenciesMeta:
-      react:
-        optional: true
-    dependencies:
-      react: 17.0.2
-    dev: false
