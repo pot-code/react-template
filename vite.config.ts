@@ -1,7 +1,6 @@
-import { resolve } from "path";
 import { defineConfig } from "vite";
 import { visualizer } from "rollup-plugin-visualizer";
-import reactRefresh from "@vitejs/plugin-react-refresh";
+import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
@@ -10,7 +9,7 @@ export default defineConfig({
     outDir: "build",
   },
   plugins: [
-    reactRefresh(),
+    react(),
     tsconfigPaths(),
     visualizer({
       template: "sunburst",
