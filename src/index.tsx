@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@emotion/react";
 import i18n from "i18next";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -26,14 +25,12 @@ i18n.use(initReactI18next).init({
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <QueryClientProvider client={queryClient}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  </ThemeProvider>,
+  <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+    <ReactQueryDevtools initialIsOpen={false} />
+  </QueryClientProvider>,
   document.getElementById("root")
 );
 
