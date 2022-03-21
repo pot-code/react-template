@@ -11,7 +11,6 @@
     "framer-motion": "^6.2.8",
     "i18next": "^20.6.1",
     "react": "^17.0.2",
-    "react-content-loader": "^6.2.0",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.16.1",
     "react-icons": "^4.3.1",
@@ -56,9 +55,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest --passWithNoTests",
-    "test:watch": "jest --watch",
-    "sb": "start-storybook -p 6006",
-    "sb:build": "build-storybook"
+    "test:watch": "jest --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -74,21 +71,24 @@
       "project": "./tsconfig.json"
     },
     "rules": {
-      "no-console": "warn",
-      "no-underscore-dangle": "warn",
-      "no-param-reassign": "off",
-      "no-bitwise": "off",
-      "no-plusplus": "off",
-      "no-unused-vars": "warn",
-      "react/jsx-props-no-spreading": "off",
-      "react/no-array-index-key": "warn",
       "@typescript-eslint/no-unused-vars": "off",
       "import/extensions": "off",
-      "import/prefer-default-export": "off",
       "import/no-extraneous-dependencies": "off",
+      "import/prefer-default-export": "off",
       "jsx-a11y/click-events-have-key-events": "warn",
+      "jsx-a11y/mouse-events-have-key-events": "warn",
       "jsx-a11y/no-static-element-interactions": "warn",
-      "jsx-a11y/mouse-events-have-key-events": "warn"
+      "no-bitwise": "off",
+      "no-console": "warn",
+      "no-param-reassign": "off",
+      "no-plusplus": "off",
+      "no-underscore-dangle": "warn",
+      "no-unused-vars": "warn",
+      "react/function-component-definition": "off",
+      "react/jsx-no-bind": "warn",
+      "react/jsx-props-no-spreading": "off",
+      "react/no-array-index-key": "warn",
+      "react/require-default-props": "off"
     }
   },
   "jest": {
@@ -104,9 +104,6 @@
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
-    "transform": {
-      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
-    },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$"

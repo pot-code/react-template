@@ -1,6 +1,6 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "es5",
     "lib": [
       "dom",
@@ -10,10 +10,9 @@
     "types": [
       "@emotion/react/types/css-prop",
       "vite/client",
-      "jest"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "allowJs": false,
+    "skipLibCheck": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -24,7 +23,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ],
+    }
   },
   "include": [
     "src"
