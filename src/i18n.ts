@@ -3,7 +3,16 @@ import { initReactI18next } from "react-i18next";
 
 const resources = {
   zh: {
-    translation: {},
+    translation: {
+      hello: "你好，世界",
+      start: "开始",
+    },
+  },
+  en: {
+    translation: {
+      hello: "hello world",
+      start: "start",
+    },
   },
 };
 
@@ -11,7 +20,6 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: "zh",
     fallbackLng: "zh",
     interpolation: {
       escapeValue: false,

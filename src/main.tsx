@@ -1,26 +1,11 @@
-import i18n from "i18next";
 import React from "react";
 import ReactDOM from "react-dom";
-import { initReactI18next } from "react-i18next";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import theme from "./theme";
-
-i18n.use(initReactI18next).init({
-  resources: {
-    zh: {
-      translation: {},
-    },
-  },
-  lng: "zh",
-  fallbackLng: "zh",
-  interpolation: {
-    escapeValue: false,
-  },
-});
+import "./i18n";
 
 const queryClient = new QueryClient();
 
