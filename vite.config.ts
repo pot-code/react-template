@@ -7,9 +7,13 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
-  plugins: [react(), tsconfigPaths()],
-  esbuild: {
-    jsxFactory: `jsx`,
-    jsxInject: `import { jsx } from '@emotion/react'`,
-  },
+  plugins: [
+    react({
+      jsxImportSource: "@emotion/react",
+      babel: {
+        plugins: ["@emotion/babel-plugin"],
+      },
+    }),
+    tsconfigPaths(),
+  ],
 });
