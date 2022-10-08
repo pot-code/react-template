@@ -1,7 +1,4 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { useToggle } from "react-use";
 import { useTranslation } from "react-i18next";
 
@@ -10,16 +7,12 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <Box>
-      {show && (
-        <Typography component="h1" role="heading">
-          {t("hello")}
-        </Typography>
-      )}
-      <Button role="button" onClick={toggle}>
+    <div>
+      {show && <h1>{t("hello")}</h1>}
+      <button type="button" onClick={toggle}>
         {t("start")}
-      </Button>
-    </Box>
+      </button>
+    </div>
   );
 }
 
