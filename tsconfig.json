@@ -10,6 +10,7 @@
     "types": [
       "@emotion/react/types/css-prop",
       "vite/client",
+      "jest"
     ],
     "allowJs": false,
     "skipLibCheck": false,
@@ -23,18 +24,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "@/*": [
-        "*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@hooks/*": [
-        "hooks/*"
-      ],
-    }
+    "jsx": "react-jsx"
   },
   "include": [
     "src"

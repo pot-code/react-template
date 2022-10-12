@@ -6,12 +6,10 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "axios": "^0.26.1",
-    "classnames": "^2.3.2",
     "i18next": "^20.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.18.6",
-    "react-icons": "^4.4.0",
     "react-query": "^3.39.2",
     "react-router-dom": "^6.4.2",
     "react-use": "^17.4.0",
@@ -19,18 +17,26 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
-    "@testing-library/dom": "^8.18.1",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-vite": "^0.2.4",
+    "@storybook/react": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
+    "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^12.1.5",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.1.2",
     "@types/react": "^17.0.50",
     "@types/react-dom": "^17.0.17",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
-    "@vitejs/plugin-react": "^1.3.2",
-    "babel-jest": "^27.5.1",
+    "@vitejs/plugin-react": "^2.1.0",
+    "babel-jest": "^29.1.2",
+    "babel-loader": "^8.2.5",
     "babel-preset-react-app": "^10.0.1",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -39,20 +45,23 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react": "^7.31.9",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^27.5.1",
+    "jest": "^29.1.2",
+    "msw": "^0.47.4",
+    "msw-storybook-addon": "^1.6.3",
     "prettier": "^2.7.1",
     "typescript": "^4.8.4",
-    "vite": "^2.9.15",
-    "vite-tsconfig-paths": "^3.5.1"
+    "vite": "^3.1.7"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest --passWithNoTests",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -68,7 +77,8 @@
       "project": "./tsconfig.json"
     },
     "rules": {
-      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/naming-convention": "off",
       "import/extensions": "off",
       "import/no-extraneous-dependencies": "off",
       "import/prefer-default-export": "off",
@@ -76,17 +86,27 @@
       "jsx-a11y/mouse-events-have-key-events": "warn",
       "jsx-a11y/no-static-element-interactions": "warn",
       "no-bitwise": "off",
+      "max-classes-per-file": "off",
       "no-console": "warn",
       "no-param-reassign": "off",
       "no-plusplus": "off",
+      "no-empty-pattern": "warn",
       "no-underscore-dangle": "warn",
-      "no-unused-vars": "warn",
+      "no-unused-vars": "off",
       "react/function-component-definition": "off",
       "react/jsx-no-bind": "warn",
       "react/jsx-props-no-spreading": "off",
       "react/no-array-index-key": "warn",
       "react/require-default-props": "off",
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "react/no-unknown-property": [
+        "error",
+        {
+          "ignore": [
+            "css"
+          ]
+        }
+      ]
     }
   },
   "jest": {
