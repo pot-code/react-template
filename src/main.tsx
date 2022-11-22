@@ -1,18 +1,22 @@
+import { ThemeProvider } from "@emotion/react";
 import React from "react";
 import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App";
+import "./i18n";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import "./i18n";
+import theme from "./theme";
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <React.StrictMode>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </React.StrictMode>
     <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>,
