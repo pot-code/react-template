@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-template",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.10.5",
     "axios": "^1.2.0",
     "i18next": "^22.0.6",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.0.0",
@@ -29,6 +30,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.2.3",
+    "@types/lodash": "^4.14.190",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "@types/react-router-dom": "^5.3.3",
@@ -53,7 +55,8 @@
     "prettier": "^2.8.0",
     "rollup-plugin-visualizer": "^5.8.3",
     "typescript": "^4.9.3",
-    "vite": "^3.2.4"
+    "vite": "^3.2.4",
+    "vite-plugin-html": "^3.2.0"
   },
   "scripts": {
     "dev": "vite",
@@ -164,5 +167,8 @@
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

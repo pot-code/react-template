@@ -8,17 +8,27 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme";
 
+async function prepare() {
+  if (import.meta.env.DEV) {
+    import("./mocks/browser").then(({ worker }) => {
+      worker.start();
+    });
+  }
+}
+
 const queryClient = new QueryClient();
 const root = createRoot(document.getElementById("root")!);
 
-root.render(
-  <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </React.StrictMode>
-  </QueryClientProvider>
+prepare().then(() =>
+  root.render(
+    <QueryClientProvider client={queryClient}>
+      <React.StrictMode>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </React.StrictMode>
+    </QueryClientProvider>
+  )
 );
 
 // If you want to start measuring performance in your app, pass a function
