@@ -1,4 +1,4 @@
-import client from "./features/api/client";
+import client from "../../lib/axios";
 
 export class DemoAPI {
   static hello() {

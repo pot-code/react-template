@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
-import { DemoAPI } from "./api";
+import { DemoAPI } from "./features/app/api";
 
 function App() {
   const { t } = useTranslation();
