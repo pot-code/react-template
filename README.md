@@ -22,9 +22,3 @@ yarn add -D husky
 # pnpm
 pnpm add -D husky
 ```
-
-### msw
-
-```bash
-npx msw init public/
-```
