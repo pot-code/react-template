@@ -14,7 +14,13 @@ async function prepare() {
   }
 }
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 const root = createRoot(document.getElementById("root")!);
 
 prepare().then(() =>

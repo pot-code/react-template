@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { URLSerializer } from "../features/shared/types/serializer";
+import { URLSerializer } from "../lib/serializer";
 
 export default function useURLParams<T>(serializer: URLSerializer<T>): [T, Dispatch<SetStateAction<T>>] {
   const location = useLocation();

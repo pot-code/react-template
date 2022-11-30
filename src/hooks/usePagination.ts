@@ -1,14 +1,20 @@
 import { useCallback, useState } from "react";
-import { PaginationParams } from "../features/shared/types/pagination";
+import { OptionalPaginationParams } from "../types/pagination";
 
-export default function usePagination(defaultPagination?: PaginationParams) {
-  const [pagination, setPagination] = useState<PaginationParams | undefined>(defaultPagination);
-  const changePagination = useCallback((page: number, page_size: number) => {
-    setPagination((old) => {
-      if (!old) return { page, page_size };
-      if (old.page_size !== page_size) return { ...old, page_size, page: 1 };
-      return { ...old, page };
-    });
+export interface ChangePaginationFn {
+  (page?: number, page_size?: number): void;
+}
+
+export default function usePagination(defaultPagination?: OptionalPaginationParams) {
+  const [pagination, setPagination] = useState<OptionalPaginationParams | undefined>(defaultPagination);
+  const changePagination = useCallback<ChangePaginationFn>((page?: number, page_size?: number) => {
+    if (page && page_size)
+      setPagination((old) => {
+        if (old && old.page_size !== page_size) return { page: 1, page_size };
+        return { page, page_size };
+      });
+    else if (page) setPagination((old) => ({ ...old, page }));
+    else if (page_size) setPagination({ page: 1, page_size });
   }, []);
 
   return { pagination, changePagination };
