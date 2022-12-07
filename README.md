@@ -5,6 +5,7 @@
 - [RTL(react-testing-library)](https://testing-library.com)
 - Typescript
 - Storybook
+- Playwright
 - [msw(Mock Service Worker)](https://mswjs.io/) API mocking
 
 # Usage

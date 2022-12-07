@@ -91,3 +91,6 @@ node_modules/
 *.org
 
 # End of https://www.gitignore.io/api/node,macos,visualstudiocode
+/test-results/
+/playwright-report/
+/playwright/.cache/

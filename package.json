@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@playwright/test": "^1.28.1",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
@@ -75,7 +76,8 @@
       "plugin:prettier/recommended"
     ],
     "ignorePatterns": [
-      "*.config.ts"
+      "*.config.ts",
+      "*.spec.ts"
     ],
     "parserOptions": {
       "project": "./tsconfig.json"
