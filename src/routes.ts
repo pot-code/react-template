@@ -1,6 +1,6 @@
 import React from "react";
 import { RouterConfig } from "./lib/router/type";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 
 export const routes: RouterConfig = [
   {
