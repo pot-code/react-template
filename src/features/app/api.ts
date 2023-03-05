@@ -1,4 +1,4 @@
-import client from "../../lib/axios";
+import client from "../../lib/hooks/axios";
 
 export class DemoAPI {
   static hello() {

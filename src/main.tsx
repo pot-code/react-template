@@ -2,10 +2,10 @@ import { ThemeProvider } from "@emotion/react";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
+import theme from "./theme";
 import App from "./App";
 import "./i18n";
-import "./index.css";
-import theme from "./theme";
+import "./main.css";
 
 async function prepare() {
   if (import.meta.env.DEV) {

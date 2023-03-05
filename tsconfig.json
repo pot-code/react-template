@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "target": "es5",
+    "target": "ESNext",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
     ],
     "types": [
       "@emotion/react/types/css-prop",
@@ -29,4 +28,9 @@
   "include": [
     "src"
   ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

@@ -1,31 +1,16 @@
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 import { visualizer } from "rollup-plugin-visualizer";
-import { defineConfig, loadEnv, splitVendorChunkPlugin } from "vite";
-import { createHtmlPlugin } from "vite-plugin-html";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 
-export default ({ mode }) => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-
-  return defineConfig({
-    build: {
-      outDir: "dist",
-    },
-    plugins: [
-      splitVendorChunkPlugin(),
-      visualizer(),
-      createHtmlPlugin({
-        inject: {
-          data: {
-            title: process.env.VITE_PROJECT_NAME,
-          },
-        },
-      }),
-      react({
-        jsxImportSource: "@emotion/react",
-        babel: {
-          plugins: ["@emotion/babel-plugin"],
-        },
-      }),
-    ],
-  });
-};
+export default defineConfig({
+  build: {
+    outDir: "dist",
+  },
+  plugins: [
+    splitVendorChunkPlugin(),
+    visualizer(),
+    react({
+      jsxImportSource: "@emotion/react",
+    }),
+  ],
+});
