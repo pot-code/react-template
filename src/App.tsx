@@ -1,20 +1,11 @@
-import styled from "@emotion/styled";
-import { useTranslation } from "react-i18next";
-import { useQuery } from "react-query";
-import { DemoAPI } from "./features/app/api";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createRoutesFromConfig } from "./lib/router/util";
+import { routes } from "./routes";
 
-const Title = styled.h1`
-  color: #c7e8ca;
-`;
+const router = createBrowserRouter(createRoutesFromConfig(routes));
 
 function App() {
-  const { t } = useTranslation();
-  const { data, isLoading } = useQuery(["hello"], DemoAPI.hello);
-
-  if (isLoading) return <Title>loading</Title>;
-
-  return <Title>{t(data!.data)}</Title>;
+  return <RouterProvider router={router} />;
 }
-App.whyDidYouRender = true;
 
 export default App;
