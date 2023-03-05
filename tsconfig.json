@@ -9,7 +9,7 @@
     "types": [
       "@emotion/react/types/css-prop",
       "vite/client",
-      "jest"
+      "vitest/globals"
     ],
     "allowJs": false,
     "skipLibCheck": false,
