@@ -9,6 +9,7 @@ import "./main.css";
 
 async function prepare() {
   if (import.meta.env.DEV) {
+    await import("./wdyr");
     const { worker } = await import("./mocks/browser");
     await worker.start();
   }
@@ -21,8 +22,8 @@ const queryClient = new QueryClient({
     },
   },
 });
-const root = createRoot(document.getElementById("root")!);
 
+const root = createRoot(document.getElementById("root")!);
 prepare().then(() =>
   root.render(
     <QueryClientProvider client={queryClient}>

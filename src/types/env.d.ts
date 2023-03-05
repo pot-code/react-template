@@ -2,7 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_ENDPOINT: string;
-  readonly VITE_PROJECT_NAME: string;
+  readonly VITE_WDYR_ENABLED: string;
 }
 
 interface ImportMeta {

@@ -15,5 +15,6 @@ function App() {
 
   return <Title>{t(data!.data)}</Title>;
 }
+App.whyDidYouRender = true;
 
 export default App;
