@@ -41,7 +41,9 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
     "jsdom": "^21.1.0",
+    "lint-staged": "^13.1.2",
     "msw": "^1.1.0",
     "msw-storybook-addon": "^1.7.0",
     "prettier": "^2.8.4",
@@ -53,9 +55,12 @@
     "vitest": "^0.29.2"
   },
   "scripts": {
+    "prepare": "husky install",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "lint": "eslint --fix src",
+    "lint-staged": "lint-staged",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
@@ -127,12 +132,6 @@
       "npm run lint",
       "prettier --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "msw": {
     "workerDirectory": "public"
