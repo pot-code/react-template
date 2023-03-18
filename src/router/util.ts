@@ -1,5 +1,5 @@
 import { RouteObject } from "react-router-dom";
-import { RouteItem, RouterConfig } from "./type";
+import { RouterConfig, RouteItem } from "./type";
 
 export function createRoutesFromConfig(config: RouterConfig): RouteObject[] {
   function mapping(item: RouteItem): RouteObject {

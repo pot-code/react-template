@@ -2,18 +2,12 @@ import { ThemeProvider } from "@emotion/react";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
-import theme from "./theme";
+
 import App from "./App";
 import "./i18n";
-import "./main.css";
-
-async function prepare() {
-  if (import.meta.env.DEV) {
-    await import("./wdyr");
-    const { worker } = await import("./mocks/browser");
-    await worker.start();
-  }
-}
+import { setup } from "./setup";
+import "./style/main.css";
+import theme from "./theme";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +18,7 @@ const queryClient = new QueryClient({
 });
 
 const root = createRoot(document.getElementById("root")!);
-prepare().then(() =>
+setup().then(() =>
   root.render(
     <QueryClientProvider client={queryClient}>
       <React.StrictMode>
