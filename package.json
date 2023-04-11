@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
     "@react-hookz/web": "^22.0.0",
     "axios": "^1.3.4",
     "i18next": "^22.4.12",
@@ -17,6 +15,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.31.2",
+    "@rushstack/eslint-patch": "^1.2.0",
     "@storybook/addon-essentials": "^7.0.0-beta.61",
     "@storybook/addon-interactions": "^7.0.0-beta.61",
     "@storybook/addon-links": "^7.0.0-beta.61",
@@ -50,6 +49,7 @@
     "prettier": "^2.8.4",
     "prop-types": "^15.8.1",
     "rollup-plugin-visualizer": "^5.9.0",
+    "sass": "^1.61.0",
     "storybook": "^7.0.0-beta.61",
     "typescript": "^5.0.2",
     "vite": "^4.2.0",
@@ -67,54 +67,6 @@
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "airbnb",
-      "airbnb-typescript",
-      "plugin:react-hooks/recommended",
-      "plugin:prettier/recommended"
-    ],
-    "ignorePatterns": [
-      "*.config.ts",
-      "*.spec.ts"
-    ],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
-    "rules": {
-      "max-classes-per-file": "off",
-      "no-bitwise": "off",
-      "no-console": "warn",
-      "no-empty-pattern": "warn",
-      "no-param-reassign": "off",
-      "no-plusplus": "off",
-      "no-underscore-dangle": "warn",
-      "no-unused-vars": "off",
-      "import/extensions": "off",
-      "import/no-extraneous-dependencies": "off",
-      "import/prefer-default-export": "off",
-      "@typescript-eslint/no-unused-vars": "warn",
-      "@typescript-eslint/naming-convention": "off",
-      "jsx-a11y/click-events-have-key-events": "warn",
-      "jsx-a11y/mouse-events-have-key-events": "warn",
-      "jsx-a11y/no-static-element-interactions": "warn",
-      "react/button-has-type": "off",
-      "react/function-component-definition": "off",
-      "react/jsx-no-bind": "warn",
-      "react/jsx-props-no-spreading": "off",
-      "react/no-array-index-key": "warn",
-      "react/react-in-jsx-scope": "off",
-      "react/require-default-props": "off",
-      "react/no-unknown-property": [
-        "error",
-        {
-          "ignore": [
-            "css"
-          ]
-        }
-      ]
-    }
   },
   "bowserslist": {
     "production": [

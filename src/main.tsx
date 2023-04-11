@@ -1,13 +1,11 @@
-import { ThemeProvider } from "@emotion/react";
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "react-query";
+import React from "react"
+import { createRoot } from "react-dom/client"
+import { QueryClient, QueryClientProvider } from "react-query"
 
-import App from "./App";
-import "./i18n";
-import { setup } from "./setup";
-import "./style/main.css";
-import theme from "./theme";
+import App from "./App"
+import "./i18n"
+import { setup } from "./setup"
+import "./styles/main.scss"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,17 +13,15 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
     },
   },
-});
+})
 
-const root = createRoot(document.getElementById("root")!);
+const root = createRoot(document.getElementById("root")!)
 setup().then(() =>
   root.render(
     <QueryClientProvider client={queryClient}>
       <React.StrictMode>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
+        <App />
       </React.StrictMode>
     </QueryClientProvider>
   )
-);
+)

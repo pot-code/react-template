@@ -1,7 +1,7 @@
-import client from "@/lib/http/axios";
+import http from "@/lib/http"
 
 export class DemoAPI {
   static hello() {
-    return client.get<string>("/hello");
+    return http.get<string>("/hello")
   }
 }

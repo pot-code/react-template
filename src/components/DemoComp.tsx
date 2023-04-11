@@ -1,7 +1,7 @@
 export interface DemoCompProps {}
 
 function DemoComp({}: DemoCompProps) {
-  return <h1>hello world</h1>;
+  return <h1>hello world</h1>
 }
 
-export default DemoComp;
+export default DemoComp

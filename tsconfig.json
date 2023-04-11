@@ -8,7 +8,6 @@
       "ESNext"
     ],
     "types": [
-      "@emotion/react/types/css-prop",
       "vite/client",
       "vitest/globals"
     ],

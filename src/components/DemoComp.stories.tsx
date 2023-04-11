@@ -1,11 +1,11 @@
-import { Meta, StoryFn } from "@storybook/react";
-import DemoComp from "./DemoComp";
+import { Meta, StoryFn } from "@storybook/react"
+import DemoComp from "./DemoComp"
 
 export default {
   title: "component/DemoComp",
   component: DemoComp,
-} as Meta<typeof DemoComp>;
+} as Meta<typeof DemoComp>
 
-const Template: StoryFn<typeof DemoComp> = (args) => <DemoComp {...args} />;
+const Template: StoryFn<typeof DemoComp> = (args) => <DemoComp {...args} />
 
-export const Basic = Template.bind({});
+export const Basic = Template.bind({})

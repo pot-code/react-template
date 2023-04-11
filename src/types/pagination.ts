@@ -1,12 +1,12 @@
 export interface PaginationResponse<T> {
-  count: number;
-  page: number;
-  results: T[];
+  count: number
+  page: number
+  results: T[]
 }
 
 export interface PaginationParams {
-  page: number;
-  page_size: number;
+  page: number
+  page_size: number
 }
 
-export type OptionalPaginationParams = Partial<PaginationParams>;
+export type OptionalPaginationParams = Partial<PaginationParams>
