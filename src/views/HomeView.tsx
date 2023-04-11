@@ -6,9 +6,9 @@ function Home() {
   const { t } = useTranslation()
   const { data, isLoading } = useQuery(["hello"], DemoAPI.hello)
 
-  if (isLoading) return <h1>loading</h1>
+  if (isLoading) return <h1 className="text-gray-5">loading</h1>
 
-  return <h1>{t(data!.data)}</h1>
+  return <h1 className="text-blue-500">{t(data!.data)}</h1>
 }
 Home.whyDidYouRender = true
 

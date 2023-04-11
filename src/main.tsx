@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "react-query"
 import App from "./App"
 import "./i18n"
 import { setup } from "./setup"
+
+import "virtual:uno.css"
 import "./styles/main.scss"
 
 const queryClient = new QueryClient({

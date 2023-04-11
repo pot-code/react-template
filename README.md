@@ -3,7 +3,7 @@
 - React Query
 - Axios
 - i18n
-- [Emotion](https://emotion.sh/docs/@emotion/react)
+- [UnoCSS](https://unocss.dev/guide/)
 - [Vite](https://vitejs.dev)
 - [Vitest](https://vitest.dev)
 - Typescript
