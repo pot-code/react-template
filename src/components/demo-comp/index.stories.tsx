@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react"
-import DemoComp from "./DemoComp"
+import DemoComp from "."
 
 export default {
   title: "component/DemoComp",
