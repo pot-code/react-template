@@ -33,7 +33,6 @@
   "include": [
     "src",
     "env.d.ts",
-    "emotion.d.ts",
     "mock",
   ],
   "references": [

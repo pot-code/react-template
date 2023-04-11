@@ -1,7 +1,7 @@
 import React from "react"
 
 async function installMockService() {
-  return import("../mock/browser").then(({ worker }) => worker.start())
+  return import("../mock/browser").then(({ createWorker }) => createWorker()).then((worker) => worker.start())
 }
 
 async function installWdyr() {

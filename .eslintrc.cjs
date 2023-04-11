@@ -4,7 +4,7 @@ require("@rushstack/eslint-patch/modern-module-resolution")
 module.exports = {
   root: true,
   extends: ["airbnb", "airbnb-typescript", "plugin:react-hooks/recommended", "plugin:prettier/recommended"],
-  ignorePatterns: ["*.config.ts", "*.spec.ts"],
+  ignorePatterns: ["*.config.ts", "*.spec.ts", ".eslintrc.cjs"],
   parserOptions: {
     project: "./tsconfig.json",
   },
@@ -32,11 +32,5 @@ module.exports = {
     "react/no-array-index-key": "warn",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
-    "react/no-unknown-property": [
-      "error",
-      {
-        ignore: ["css"],
-      },
-    ],
   },
 }
