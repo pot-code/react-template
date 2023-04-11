@@ -1,7 +1,5 @@
 import http from "@/lib/http"
 
-export class DemoAPI {
-  static hello() {
-    return http.get<string>("/hello")
-  }
+export const demoApi = {
+  hello: (signal?: AbortSignal) => http.get<string>("/hello", { signal }),
 }
