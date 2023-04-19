@@ -9,3 +9,6 @@ export default {
 const Template: StoryFn<typeof DemoComp> = (args) => <DemoComp {...args} />
 
 export const Basic = Template.bind({})
+Basic.args = {
+  title: "Demo",
+}
