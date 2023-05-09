@@ -24,6 +24,6 @@ setup().then(() =>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </QueryClientProvider>
-  )
+    </QueryClientProvider>,
+  ),
 )

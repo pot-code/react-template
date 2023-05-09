@@ -11,7 +11,7 @@ function Home() {
 
   if (data?.data) return <DemoComp title={t(data.data)} />
 
-  return ""
+  return null
 }
 Home.whyDidYouRender = true
 
