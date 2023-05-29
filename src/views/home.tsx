@@ -3,7 +3,7 @@ import { useQuery } from "react-query"
 import { demoApi } from "@/features/app/api"
 import DemoComp from "@/components/demo-comp"
 
-function Home() {
+export default function HomeView() {
   const { t } = useTranslation()
   const { data, isLoading } = useQuery(["hello"], ({ signal }) => demoApi.hello(signal))
 
@@ -13,6 +13,3 @@ function Home() {
 
   return null
 }
-Home.whyDidYouRender = true
-
-export default Home

@@ -2,7 +2,7 @@ import React from "react"
 import { createRoot } from "react-dom/client"
 import { QueryClient, QueryClientProvider } from "react-query"
 
-import App from "./App"
+import App from "./app"
 import "./i18n"
 import { setup } from "./setup"
 
@@ -18,6 +18,7 @@ const queryClient = new QueryClient({
 })
 
 const root = createRoot(document.getElementById("root")!)
+
 setup().then(() =>
   root.render(
     <QueryClientProvider client={queryClient}>

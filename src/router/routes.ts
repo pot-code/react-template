@@ -1,8 +1,8 @@
 import React from "react"
-import HomeView from "../views/HomeView"
-import { RouteItem } from "./type"
+import { RouteObject } from "react-router-dom"
+import HomeView from "@/views/home"
 
-export const routes: RouteItem[] = [
+export const routes: RouteObject[] = [
   {
     path: "/",
     element: React.createElement(HomeView),
