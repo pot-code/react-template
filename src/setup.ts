@@ -1,16 +1,20 @@
 import React from "react"
 
 async function installMockService() {
-  return import("../mock/browser").then(({ createWorker }) => createWorker()).then((worker) => worker.start())
+  if (import.meta.env.DEV) {
+    await import("../mock/browser").then(({ createWorker }) => createWorker()).then((worker) => worker.start())
+  }
 }
 
 async function installWdyr() {
-  const { default: wdyr } = await import("@welldone-software/why-did-you-render")
-  wdyr(React, {
-    exclude: [/^BrowserRouter/, /^Link/, /^Route/],
-    trackHooks: true,
-    trackAllPureComponents: true,
-  })
+  if (import.meta.env.VITE_WDYR_ENABLED === "ture") {
+    const { default: wdyr } = await import("@welldone-software/why-did-you-render")
+    wdyr(React, {
+      exclude: [/^BrowserRouter/, /^Link/, /^Route/],
+      trackHooks: true,
+      trackAllPureComponents: true,
+    })
+  }
 }
 
 export async function setup() {
