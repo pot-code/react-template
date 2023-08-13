@@ -5,13 +5,11 @@ const resources = {
   zh: {
     translation: {
       hello: "你好，世界",
-      start: "开始",
     },
   },
   en: {
     translation: {
       hello: "hello world",
-      start: "start",
     },
   },
 }

@@ -3,7 +3,7 @@ import { UnauthorizedError } from "./error"
 import { HttpErrorStream } from "./event"
 import type { HttpResponse } from "./types"
 
-export function handleBusinessError(res: AxiosResponse) {
+export function captureBusinessError(res: AxiosResponse) {
   const { code } = res.data
   if (code === 200) {
     return res
