@@ -1,6 +1,6 @@
 # Integrations
 
-- React Query
+- TanStack Query
 - Axios
 - i18n
 - [UnoCSS](https://unocss.dev/guide/)
