@@ -4,31 +4,36 @@ import { HttpErrorStream } from "./event"
 import type { HttpResponse } from "./types"
 
 export function captureBusinessError(res: AxiosResponse) {
-  const { code } = res.data
+  const { code, msg } = res.data
   if (code && code !== 200) {
-    return Promise.reject(res)
+    const err = new HttpError(msg || "", code)
+    HttpErrorStream.next(err)
+    return Promise.reject(err)
   }
   return res
 }
 
-export function handleRejection(err: any) {
-  if (axios.isCancel(err)) {
+export function handleRejection(error: any) {
+  if (axios.isCancel(error)) {
     return Promise.resolve()
   }
 
-  if (err.data) {
-    const { data } = err as AxiosResponse<HttpResponse<null>>
-    const { msg, code } = data
-    HttpErrorStream.next(new HttpError(msg || "", code))
-  } else if (err.response) {
-    const { msg, code } = err.response.data as HttpResponse<null>
-    HttpErrorStream.next(new HttpError(msg || "", code))
-  } else if (err.request) {
-    HttpErrorStream.next(new HttpError("请求超时" || "", -1))
-  } else if (err instanceof Error) {
-    HttpErrorStream.next(HttpError.fromError(err))
+  let httpError
+  if (error.response) {
+    const response = error.response as AxiosResponse
+    if (response.data) {
+      const { msg, code } = response.data as HttpResponse<null>
+      httpError = new HttpError(msg || "", code)
+    } else {
+      httpError = new HttpError(response.statusText, response.status)
+    }
+  } else if (error.request) {
+    httpError = new HttpError("连接远程服务器失败" || "", -1)
+  } else if (error instanceof Error) {
+    httpError = HttpError.fromError(error)
   } else {
-    HttpErrorStream.next(new HttpError("未知错误" || "", -1))
+    httpError = new HttpError("未知错误" || "", -1)
   }
-  return Promise.reject(err)
+  HttpErrorStream.next(httpError)
+  return Promise.reject(httpError)
 }
