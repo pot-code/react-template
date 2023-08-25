@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next"
+import { useQuery } from "@tanstack/react-query"
 import DemoComp from "@/components/demo-comp"
 import { demoApi } from "@/api/demo"
-import { useQuery } from "@tanstack/react-query"
 
 export default function HomeView() {
   const { t } = useTranslation()
