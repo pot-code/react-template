@@ -30,7 +30,7 @@ class HttpClient {
     return this.client.delete<T>(url, config).then((res) => res.data)
   }
 
-  async method(method: string, url: string, config?: AxiosRequestConfig<any>) {
+  async request(method: string, url: string, config?: AxiosRequestConfig<any>) {
     return this.client
       .request({
         method,
