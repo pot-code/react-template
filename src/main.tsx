@@ -3,10 +3,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { createRoot } from "react-dom/client"
 
 import App from "./app"
-import "./i18n"
-import { setup } from "./setup"
+import setup from "./setup"
 import { HttpError } from "./core/http"
 
+import "./i18n"
 import "virtual:uno.css"
 import "./styles/main.scss"
 

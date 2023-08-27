@@ -17,7 +17,7 @@ async function installWdyr() {
   }
 }
 
-export async function setup() {
+export default async function setup() {
   await installWdyr()
   await installMockService()
 }
