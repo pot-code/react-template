@@ -6,8 +6,6 @@ import App from "./app"
 import setup from "./setup"
 import { HttpError } from "./core/http"
 
-import "./i18n"
-import "virtual:uno.css"
 import "./styles/main.scss"
 
 const queryClient = new QueryClient({
