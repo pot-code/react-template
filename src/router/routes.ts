@@ -1,6 +1,6 @@
 import React from "react"
 import { RouteObject } from "react-router-dom"
-import HomeView from "../views/home"
+import HomeView from "@/pages/home"
 
 export const routes: RouteObject[] = [
   {
