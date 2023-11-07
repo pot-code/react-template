@@ -7,11 +7,11 @@
     "@tanstack/react-query": "^5.7.2",
     "axios": "^1.6.0",
     "i18next": "^23.6.0",
-    "lodash-es": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.3.1",
     "react-router-dom": "^6.18.0",
+    "remeda": "^1.29.0",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
@@ -24,7 +24,6 @@
     "@storybook/react": "^7.5.3",
     "@storybook/react-vite": "^7.5.3",
     "@testing-library/user-event": "^14.5.1",
-    "@types/lodash-es": "^4.17.10",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
     "@types/react-router-dom": "^5.3.3",
