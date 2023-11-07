@@ -1,4 +1,4 @@
-import { setupWorker } from "msw"
+import { setupWorker } from "msw/browser"
 
 export async function createWorker() {
   const exportHandlers: any[] = []

@@ -5,9 +5,12 @@ import DemoComp from "@/components/demo-comp"
 
 export default function HomeView() {
   const { t } = useTranslation()
-  const { data, isLoading } = useQuery(["hello"], ({ signal }) => demoApi.hello(signal).then((res) => res.data))
+  const { data, isPending } = useQuery({
+    queryKey: ["hello"],
+    queryFn: ({ signal }) => demoApi.hello(signal).then((res) => res.data),
+  })
 
-  if (isLoading) return <h1 className="text-gray-5">loading</h1>
+  if (isPending) return <h1 className="text-gray-5">loading</h1>
 
   if (data) return <DemoComp title={t(data)} />
 
