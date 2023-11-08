@@ -45,7 +45,6 @@
     "jsdom": "^22.1.0",
     "lint-staged": "^15.0.2",
     "msw": "^2.0.3",
-    "msw-storybook-addon": "^1.10.0",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
