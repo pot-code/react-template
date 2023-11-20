@@ -1,13 +1,11 @@
 import axios, { type AxiosResponse } from "axios"
 import { HttpError } from "./error"
-import { HttpErrorStream } from "./event"
 import type { HttpResponse } from "./types"
 
 export function captureBusinessError(res: AxiosResponse) {
   const { code, msg } = res.data
   if (code && code !== 200) {
     const err = new HttpError(msg || "", code)
-    HttpErrorStream.next(err)
     return Promise.reject(err)
   }
   return res
@@ -34,6 +32,5 @@ export function handleRejection(error: any) {
   } else {
     httpError = new HttpError("未知错误" || "", -1)
   }
-  HttpErrorStream.next(httpError)
   return Promise.reject(httpError)
 }

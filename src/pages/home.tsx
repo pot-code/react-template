@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
 import { useTranslation } from "react-i18next"
-import { demoApi } from "@/api/demo"
+import useDemoApi from "@/api/useDemoApi"
 import DemoComp from "@/components/demo-comp"
 
 export default function HomeView() {
   const { t } = useTranslation()
+  const demoApi = useDemoApi()
   const { data, isPending } = useQuery({
     queryKey: ["hello"],
     queryFn: ({ signal }) => demoApi.hello(signal).then((res) => res.data),
