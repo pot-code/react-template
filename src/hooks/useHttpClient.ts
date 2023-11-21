@@ -1,12 +1,44 @@
-import axios from "axios"
-import { HttpClient } from "@/core/http"
+import http, { HttpError } from "@/core/http"
 
-const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_PREFIX,
-})
+interface PostParams {
+  data?: any
+  queries?: any
+}
 
-const client = new HttpClient(axiosInstance)
+interface GetParams {
+  params?: any
+  signal?: AbortSignal
+}
 
-export default function useHttpClient() {
-  return { client }
+export function useHttpClient() {
+  function onCatch(err: HttpError) {
+    console.error("HTTP error:", err)
+  }
+
+  return {
+    async post<T = any>(url: string, params?: PostParams) {
+      return http.post<T>(url, params?.data, { params: params?.queries }).catch((err: HttpError) => {
+        onCatch(err)
+        throw err
+      })
+    },
+    async get<T = any>(url: string, params?: GetParams) {
+      return http.get<T>(url, params).catch((err: HttpError) => {
+        onCatch(err)
+        throw err
+      })
+    },
+    async put<T = any>(url: string, params?: PostParams) {
+      return http.put<T>(url, params?.data, { params: params?.queries }).catch((err: HttpError) => {
+        onCatch(err)
+        throw err
+      })
+    },
+    async delete<T = any>(url: string, params?: any) {
+      return http.delete<T>(url, { params }).catch((err: HttpError) => {
+        onCatch(err)
+        throw err
+      })
+    },
+  }
 }
