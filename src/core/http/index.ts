@@ -3,7 +3,7 @@ import HttpClient from "./client"
 import { captureBusinessError, handleRejection } from "./interceptors"
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_ENDPOINT,
+  baseURL: import.meta.env.VITE_API_PREFIX,
 })
 
 axiosInstance.interceptors.response.use(captureBusinessError, handleRejection)
