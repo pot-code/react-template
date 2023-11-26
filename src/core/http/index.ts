@@ -1,14 +1,5 @@
-import axios from "axios"
-import HttpClient from "./client"
-import { captureBusinessError, handleRejection } from "./interceptors"
+import { AxiosHttpClient } from "./client"
 
-const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_PREFIX,
-})
-
-axiosInstance.interceptors.response.use(captureBusinessError, handleRejection)
-
-export default new HttpClient(axiosInstance)
+export default new AxiosHttpClient(import.meta.env.VITE_API_PREFIX)
 export { HttpError } from "./error"
-export type { HttpResponse } from "./types"
-export { HttpClient }
+export type { HttpResponse, HttpClient, HttpMethod, RequestConfig } from "./types"

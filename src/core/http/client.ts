@@ -1,31 +1,39 @@
-import { AxiosInstance, AxiosRequestConfig } from "axios"
+import axios, { AxiosInstance } from "axios"
+import { merge } from "remeda"
+import { HttpError } from "./error"
+import { HttpClient, HttpMethod, RequestConfig } from "./types"
+import { Time } from "@/utils/duration"
 
-export default class HttpClient {
-  constructor(private readonly client: AxiosInstance) {}
+export class AxiosHttpClient extends HttpClient {
+  private readonly axiosInstance: AxiosInstance
 
-  async get<T = any>(url: string, config?: AxiosRequestConfig<any>) {
-    return this.client.get<T>(url, config).then((res) => res.data)
+  constructor(baseURL: string) {
+    super()
+    this.axiosInstance = axios.create({ baseURL })
   }
 
-  async post<T = any>(url: string, data?: any, config?: AxiosRequestConfig<any>) {
-    return this.client.post<T>(url, data, config).then((res) => res.data)
-  }
+  async request<T = unknown>(method: HttpMethod, uri: string, config?: RequestConfig | undefined): Promise<T> {
+    const defaultRequestConfig = {
+      timeout: 10 * Time.Second,
+    }
+    const mergedConfig: RequestConfig = merge(defaultRequestConfig, config)
 
-  async put<T = any>(url: string, data?: any, config?: AxiosRequestConfig<any>) {
-    return this.client.put<T>(url, data, config).then((res) => res.data)
-  }
-
-  async delete<T = any>(url: string, config?: AxiosRequestConfig<any>) {
-    return this.client.delete<T>(url, config).then((res) => res.data)
-  }
-
-  async request<T>(method: string, url: string, config?: AxiosRequestConfig<any>) {
-    return this.client
+    return this.axiosInstance
       .request<T>({
+        url: uri,
         method,
-        url,
-        ...config,
+        timeout: mergedConfig.timeout,
+        params: mergedConfig?.queries,
+        headers: mergedConfig?.headers,
+        data: mergedConfig?.body,
       })
-      .then((res) => res.data)
+      .then(({ status, data, statusText }) => {
+        if (status !== 200) throw new HttpError(statusText, status)
+        return data
+      })
+      .catch((err) => {
+        if (typeof err === "string") throw new HttpError(err, -1)
+        throw new HttpError(err.message, -1)
+      })
   }
 }
