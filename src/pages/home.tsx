@@ -8,7 +8,7 @@ export default function HomeView() {
   const demoApi = useDemoApi()
   const { data, isPending } = useQuery({
     queryKey: ["hello"],
-    queryFn: ({ signal }) => demoApi.hello(signal).then((res) => res.data),
+    queryFn: () => demoApi.hello().then((res) => res.data),
   })
 
   if (isPending) return <h1 className="text-gray-5">loading</h1>
