@@ -1,8 +1,9 @@
+import { Time } from "@/utils/duration"
 import axios, { AxiosInstance } from "axios"
 import { merge } from "remeda"
-import { HttpError } from "./error"
-import { HttpClient, HttpMethod, RequestConfig } from "./types"
-import { Time } from "@/utils/duration"
+import { HttpError } from "../error"
+import { HttpMethod, RequestConfig } from "../types"
+import { HttpClient } from "./client"
 
 export class AxiosHttpClient extends HttpClient {
   private readonly axiosInstance: AxiosInstance
