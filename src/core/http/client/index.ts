@@ -1,6 +1,6 @@
-import { Time } from "@/utils/duration"
 import axios, { AxiosInstance } from "axios"
-import { merge } from "remeda"
+import { merge } from "lodash-es"
+import { Time } from "@/utils/duration"
 import { HttpError } from "../error"
 import { HttpMethod, RequestConfig } from "../types"
 import { HttpClient } from "./client"
