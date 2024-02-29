@@ -21,11 +21,4 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-
-  test: {
-    environment: "jsdom",
-    include: ["src/**/*.test.{js,ts,jsx,tsx}"],
-    passWithNoTests: true,
-    globals: true,
-  },
 })
