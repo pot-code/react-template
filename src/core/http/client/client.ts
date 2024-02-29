@@ -2,6 +2,7 @@ import { HttpMethod, RequestConfig } from "../types"
 
 export abstract class HttpClient {
   abstract request<T = unknown>(method: HttpMethod, uri: string, config?: RequestConfig | undefined): Promise<T>
+
   post<T = unknown>(uri: string, config?: RequestConfig | undefined): Promise<T> {
     return this.request("POST", uri, config)
   }
