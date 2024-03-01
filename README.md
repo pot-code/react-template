@@ -3,7 +3,7 @@
 - TanStack Query
 - Axios
 - i18n
-- [UnoCSS](https://unocss.dev/guide/)
+- [Tailwindcss](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev)
 - [Vitest](https://vitest.dev)
 - Typescript
