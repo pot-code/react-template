@@ -2,7 +2,13 @@ import React from "react"
 
 async function installMockService() {
   if (import.meta.env.VITE_MOCK_ENABLED === "true") {
-    await import("../mock/browser").then(({ createWorker }) => createWorker()).then((worker) => worker.start())
+    await import("../mock/browser")
+      .then(({ createWorker }) => createWorker())
+      .then((worker) =>
+        worker.start({
+          onUnhandledRequest: "bypass",
+        }),
+      )
   }
 }
 

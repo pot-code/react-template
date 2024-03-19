@@ -1,5 +1,3 @@
-import { HttpMethod, RequestConfig } from "../types"
-
 export abstract class HttpClient {
   abstract request<T = unknown>(method: HttpMethod, uri: string, config?: RequestConfig | undefined): Promise<T>
 
