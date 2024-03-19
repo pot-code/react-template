@@ -1,6 +1,3 @@
-/* eslint-env node */
-require("@rushstack/eslint-patch/modern-module-resolution")
-
 module.exports = {
   root: true,
   extends: ["airbnb", "airbnb-typescript", "plugin:react-hooks/recommended", "plugin:prettier/recommended"],

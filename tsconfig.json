@@ -11,6 +11,12 @@
       "vite/client",
       "vitest/globals"
     ],
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": true,
@@ -19,11 +25,6 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
     "paths": {
       "@/*": [
         "./src/*"
