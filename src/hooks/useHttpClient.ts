@@ -1,4 +1,4 @@
-import http, { HttpError, RequestConfig } from "@/core/http"
+import http, { HttpError } from "@/core/http"
 
 export function useHttpClient() {
   function onCatch(err: HttpError) {
