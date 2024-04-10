@@ -1,24 +1,19 @@
-import React from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import React from "react"
 import { createRoot } from "react-dom/client"
 
 import App from "./app"
+import { AxiosHttpClient } from "./core/http"
+import { HttpClientProvider } from "./provider/http"
 import setup from "./setup"
-import { AxiosHttpClient, HttpError } from "./core/http"
 
 import "./styles/main.scss"
-import { HttpClientProvider } from "./provider/http"
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      retry(failureCount, error) {
-        if (error instanceof HttpError && [401, 403, 500].indexOf(error.code) > -1) {
-          return false
-        }
-        return failureCount < 3
-      },
+      retry: 3,
     },
   },
 })
