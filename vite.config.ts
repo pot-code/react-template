@@ -2,14 +2,21 @@ import react from "@vitejs/plugin-react-swc"
 import { fileURLToPath, URL } from "node:url"
 import { visualizer } from "rollup-plugin-visualizer"
 import AutoImport from "unplugin-auto-import/vite"
-import { defineConfig, splitVendorChunkPlugin } from "vite"
+import { defineConfig } from "vite"
 
 export default defineConfig({
   build: {
+    emptyOutDir: true,
     outDir: "dist",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+        },
+      },
+    },
   },
   plugins: [
-    splitVendorChunkPlugin(),
     visualizer(),
     react(),
     AutoImport({
