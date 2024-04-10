@@ -1,4 +1,2 @@
-import { AxiosHttpClient } from "./client"
-
-export default new AxiosHttpClient(import.meta.env.VITE_API_PREFIX)
+export { HttpClient } from "./client"
 export { HttpError } from "./error"

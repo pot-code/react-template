@@ -7,6 +7,8 @@ import setup from "./setup"
 import { HttpError } from "./core/http"
 
 import "./styles/main.scss"
+import { HttpClientProvider } from "./provider/http"
+import { AxiosHttpClient } from "./core/http/client"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,15 +23,20 @@ const queryClient = new QueryClient({
     },
   },
 })
+const httpClient = new AxiosHttpClient({
+  baseURL: import.meta.env.VITE_API_PREFIX,
+})
 
 const root = createRoot(document.getElementById("root") as Element)
 
 setup().then(() =>
   root.render(
     <QueryClientProvider client={queryClient}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <HttpClientProvider client={httpClient}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </HttpClientProvider>
     </QueryClientProvider>,
   ),
 )

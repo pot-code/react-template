@@ -1,5 +1,4 @@
-import { HttpResponse } from "@/core/http"
-import { useHttpClient } from "@/hooks/useHttpClient"
+import { useHttpClient } from "@/provider/http"
 
 export default function useDemoApi() {
   const client = useHttpClient()
