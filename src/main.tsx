@@ -4,11 +4,10 @@ import { createRoot } from "react-dom/client"
 
 import App from "./app"
 import setup from "./setup"
-import { HttpError } from "./core/http"
+import { AxiosHttpClient, HttpError } from "./core/http"
 
 import "./styles/main.scss"
 import { HttpClientProvider } from "./provider/http"
-import { AxiosHttpClient } from "./core/http/client"
 
 const queryClient = new QueryClient({
   defaultOptions: {

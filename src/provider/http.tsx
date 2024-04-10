@@ -1,6 +1,6 @@
+import React, { createContext } from "react"
+
 import { HttpClient } from "@/core/http"
-import React from "react"
-import { createContext } from "react"
 
 interface HttpProviderData {
   client: HttpClient
@@ -14,7 +14,8 @@ interface HttpProviderProps {
 }
 
 export function HttpClientProvider({ children, client }: HttpProviderProps) {
-  return <Context.Provider value={{ client }}>{children}</Context.Provider>
+  const value = React.useMemo(() => ({ client }), [client])
+  return <Context.Provider value={value}>{children}</Context.Provider>
 }
 
 export function useHttpClient() {
