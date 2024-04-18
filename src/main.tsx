@@ -3,8 +3,8 @@ import React from "react"
 import { createRoot } from "react-dom/client"
 
 import App from "./app"
-import { AxiosHttpClient } from "./core/http"
 import { HttpClientProvider } from "./provider/http"
+import { AxiosHttpClient } from "./lib/axios"
 import setup from "./setup"
 
 import "./styles/main.scss"

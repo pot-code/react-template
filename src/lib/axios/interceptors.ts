@@ -1,5 +1,5 @@
 import axios, { type AxiosResponse } from "axios"
-import { HttpError } from "./error"
+import { HttpError } from "@/core/http"
 
 export function captureBusinessError(res: AxiosResponse) {
   const { code, msg } = res.data
