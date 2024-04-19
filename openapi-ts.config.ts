@@ -4,4 +4,5 @@ export default defineConfig({
   input: "./openapi/local-dev.openapi.json",
   output: "./src/gen/api",
   schemas: false,
+  lint: true,
 })

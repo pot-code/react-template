@@ -3,9 +3,13 @@ import type { ApiResult } from "./ApiResult"
 
 export class ApiError extends Error {
   public readonly url: string
+
   public readonly status: number
+
   public readonly statusText: string
+
   public readonly body: unknown
+
   public readonly request: ApiRequestOptions
 
   constructor(request: ApiRequestOptions, response: ApiResult, message: string) {

@@ -141,12 +141,12 @@ export const getHeaders = async (
     )
 
   if (isStringWithValue(token)) {
-    headers["Authorization"] = `Bearer ${token}`
+    headers.Authorization = `Bearer ${token}`
   }
 
   if (isStringWithValue(username) && isStringWithValue(password)) {
     const credentials = base64(`${username}:${password}`)
-    headers["Authorization"] = `Basic ${credentials}`
+    headers.Authorization = `Basic ${credentials}`
   }
 
   if (options.body !== undefined) {
