@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
 import DemoComp from "@/components/demo-comp"
-import useHttpClient from "@/hooks/useHttpClient"
+import api from "@/lib/api"
 
 export default function HomeView() {
-  const api = useHttpClient()
   const { data, isPending } = useQuery({
     queryKey: ["demo"],
     queryFn: () => api.demo.getDemo(),
