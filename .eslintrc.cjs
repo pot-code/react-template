@@ -1,18 +1,15 @@
 module.exports = {
   root: true,
-  extends: ["airbnb", "airbnb-typescript", "plugin:react-hooks/recommended", "plugin:prettier/recommended"],
-  ignorePatterns: [
-    "*.config.ts",
-    "*.config.mts",
-    "*.config.js",
-    "*.spec.ts",
-    "*.d.ts",
-    ".eslintrc.cjs",
-    "./src/gen/**",
+  env: { browser: true, es2020: true },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
   ],
-  parserOptions: {
-    project: "./tsconfig.json",
-  },
+  ignorePatterns: ["*.config.ts", "*.config.mts", "*.config.js", "*.spec.ts", "*.d.ts", ".eslintrc.cjs", "gen"],
+  plugins: ["react-refresh"],
+  parser: "@typescript-eslint/parser",
   rules: {
     "max-classes-per-file": "off",
     "no-bitwise": "off",
@@ -27,12 +24,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/naming-convention": "off",
-    "react/button-has-type": "off",
-    "react/function-component-definition": "off",
-    "react/jsx-no-bind": "warn",
-    "react/jsx-props-no-spreading": "off",
-    "react/no-array-index-key": "warn",
-    "react/react-in-jsx-scope": "off",
-    "react/require-default-props": "off",
+    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
   },
 }
