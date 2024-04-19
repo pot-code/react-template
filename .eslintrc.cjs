@@ -1,7 +1,15 @@
 module.exports = {
   root: true,
   extends: ["airbnb", "airbnb-typescript", "plugin:react-hooks/recommended", "plugin:prettier/recommended"],
-  ignorePatterns: ["*.config.ts", "*.config.mts", "*.config.js", "*.spec.ts", "*.d.ts", ".eslintrc.cjs"],
+  ignorePatterns: [
+    "*.config.ts",
+    "*.config.mts",
+    "*.config.js",
+    "*.spec.ts",
+    "*.d.ts",
+    ".eslintrc.cjs",
+    "./src/gen/**",
+  ],
   parserOptions: {
     project: "./tsconfig.json",
   },
