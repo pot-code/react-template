@@ -60,6 +60,7 @@
     "prepare": "husky",
     "dev": "vite",
     "build": "vite build",
+    "build:analyze": "vite build --mode=analyze",
     "preview": "vite preview",
     "lint": "eslint --fix src",
     "lint-staged": "lint-staged",

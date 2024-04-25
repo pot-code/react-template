@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from "node:url"
 import { visualizer } from "rollup-plugin-visualizer"
 import AutoImport from "unplugin-auto-import/vite"
 import { defineConfig } from "vite"
+import path from "node:path"
 
 const cdn = {
   react: "https://esm.sh/react@18.2.0",
@@ -26,12 +27,15 @@ export default defineConfig(({ mode }) => ({
     react({
       jsxImportSource: "@emotion/react",
     }),
-    visualizer(),
     AutoImport({
       imports: ["react", "react-router-dom"],
       dirs: ["./src/components", "./src/hooks"],
       dts: "./src/types/auto-imports.d.ts",
     }),
+    mode === "analyze" &&
+      visualizer({
+        filename: path.join(__dirname, "dist/stats.html"),
+      }),
   ],
   resolve: {
     alias: {
