@@ -49,7 +49,9 @@ export const getQueryString = (params: Record<string, unknown>): string => {
       return
     }
 
-    if (Array.isArray(value)) {
+    if (value instanceof Date) {
+      append(key, value.toISOString())
+    } else if (Array.isArray(value)) {
       value.forEach((v) => encodePair(key, v))
     } else if (typeof value === "object") {
       Object.entries(value).forEach(([k, v]) => encodePair(`${key}[${k}]`, v))
@@ -141,12 +143,12 @@ export const getHeaders = async (
     )
 
   if (isStringWithValue(token)) {
-    headers.Authorization = `Bearer ${token}`
+    headers["Authorization"] = `Bearer ${token}`
   }
 
   if (isStringWithValue(username) && isStringWithValue(password)) {
     const credentials = base64(`${username}:${password}`)
-    headers.Authorization = `Basic ${credentials}`
+    headers["Authorization"] = `Basic ${credentials}`
   }
 
   if (options.body !== undefined) {

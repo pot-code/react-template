@@ -1,11 +1,11 @@
-import { useQuery } from "@tanstack/react-query"
 import DemoComp from "@/components/demo-comp"
-import api from "@/lib/api"
+import { DemoService } from "@/gen/api"
+import { useQuery } from "@tanstack/react-query"
 
 export default function HomeView() {
   const { data, isPending } = useQuery({
     queryKey: ["demo"],
-    queryFn: () => api.demo.getDemo(),
+    queryFn: () => DemoService.getDemo(),
   })
 
   if (isPending) return <h1 className="text-gray-5">loading</h1>

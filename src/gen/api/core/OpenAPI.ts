@@ -34,7 +34,10 @@ export type OpenAPIConfig = {
   USERNAME?: string | Resolver<string> | undefined
   VERSION: string
   WITH_CREDENTIALS: boolean
-  interceptors: { request: Interceptors<AxiosRequestConfig>; response: Interceptors<AxiosResponse> }
+  interceptors: {
+    request: Interceptors<AxiosRequestConfig>
+    response: Interceptors<AxiosResponse>
+  }
 }
 
 export const OpenAPI: OpenAPIConfig = {
@@ -47,5 +50,8 @@ export const OpenAPI: OpenAPIConfig = {
   USERNAME: undefined,
   VERSION: "1.0.0",
   WITH_CREDENTIALS: false,
-  interceptors: { request: new Interceptors(), response: new Interceptors() },
+  interceptors: {
+    request: new Interceptors(),
+    response: new Interceptors(),
+  },
 }

@@ -1,4 +1,5 @@
 import React from "react"
+import { OpenAPI } from "./gen/api"
 
 async function installMockService() {
   if (import.meta.env.VITE_MOCK_ENABLED === "true") {
@@ -23,7 +24,12 @@ async function installWdyr() {
   }
 }
 
+async function configOpenApi() {
+  OpenAPI.BASE = import.meta.env.VITE_API_PREFIX
+}
+
 export default async function setup() {
   await installWdyr()
   await installMockService()
+  await configOpenApi()
 }
