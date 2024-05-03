@@ -62,7 +62,7 @@
     "build:analyze": "vite build --mode=analyze",
     "preview": "vite preview",
     "lint": "eslint --fix src",
-    "lint-staged": "lint-staged",
+    "lint-staged": "lint-staged --allow-empty",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
