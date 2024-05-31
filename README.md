@@ -1,7 +1,9 @@
 # Tech Stack
 
-- TanStack Query
-- Axios
+- [TanStack Query](https://tanstack.com/query/latest)
+- [TanStack Router](https://tanstack.com/router/latest)
+- [Axios](https://axios-http.com/)
+- [Orval](https://orval.dev/)
 - [Tailwindcss](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev)
 - [Vitest](https://vitest.dev)
