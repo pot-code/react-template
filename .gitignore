@@ -90,3 +90,7 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 
+# auto generated
+auto-imports.d.ts
+/public/mockServiceWorker.js
+routes.gen.ts

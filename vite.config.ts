@@ -2,13 +2,13 @@ import react from "@vitejs/plugin-react-swc"
 import { fileURLToPath, URL } from "node:url"
 import { visualizer } from "rollup-plugin-visualizer"
 import AutoImport from "unplugin-auto-import/vite"
+import { TanStackRouterVite } from "@tanstack/router-vite-plugin"
 import { defineConfig } from "vite"
 import path from "node:path"
 
 const cdn = {
   react: "https://esm.sh/react@18.2.0",
   "react-dom": "https://esm.sh/react-dom@18.2.0",
-  "react-router-dom": "https://esm.sh/react-router-dom@6.22.3",
 }
 
 export default defineConfig(({ mode }) => ({
@@ -26,6 +26,10 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react({
       jsxImportSource: "@emotion/react",
+    }),
+    TanStackRouterVite({
+      routesDirectory: "./src/pages",
+      generatedRouteTree: "./src/routes.gen.ts",
     }),
     AutoImport({
       imports: ["react", "react-router-dom"],
