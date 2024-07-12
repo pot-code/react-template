@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => ({
       generatedRouteTree: "./src/routes.gen.ts",
     }),
     AutoImport({
-      imports: ["react", "react-router-dom"],
+      imports: ["react"],
       dirs: ["./src/components", "./src/hooks"],
       dts: "./src/types/auto-imports.d.ts",
     }),
