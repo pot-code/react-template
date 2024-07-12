@@ -4,20 +4,16 @@
  * local-dev
  * OpenAPI spec version: 1.0.0
  */
-import * as axios from "axios"
-import type { AxiosRequestConfig, AxiosResponse } from "axios"
-export type GetDemo200 = {
-  code: number
-  data: string
-  /** @nullable */
-  msg: string | null
-}
+import type { GetDemo200 } from "./model"
+import { customInstance } from "../lib/http/instance"
+
+type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 
 /**
  * @summary demo
  */
-export const getDemo = <TData = AxiosResponse<GetDemo200>>(options?: AxiosRequestConfig): Promise<TData> => {
-  return axios.default.get(`/demo`, options)
+export const getDemo = (options?: SecondParameter<typeof customInstance>) => {
+  return customInstance<GetDemo200>({ url: `/demo`, method: "GET" }, options)
 }
 
-export type GetDemoResult = AxiosResponse<GetDemo200>
+export type GetDemoResult = NonNullable<Awaited<ReturnType<typeof getDemo>>>

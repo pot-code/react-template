@@ -1,4 +1,3 @@
-import axios from "axios"
 import React from "react"
 
 async function installMockService() {
@@ -18,18 +17,12 @@ async function installWdyr() {
     const { default: wdyr } = await import("@welldone-software/why-did-you-render")
     wdyr(React, {
       exclude: [/^BrowserRouter/, /^Link/, /^Route/],
-      trackHooks: true,
       trackAllPureComponents: true,
     })
   }
 }
 
-async function configOpenApi() {
-  axios.defaults.baseURL = import.meta.env.VITE_API_PREFIX
-}
-
 export default async function setup() {
   await installWdyr()
   await installMockService()
-  await configOpenApi()
 }

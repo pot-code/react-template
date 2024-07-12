@@ -8,7 +8,7 @@ export default defineConfig(
       name,
       {
         input: {
-          target: "http://127.0.0.1:8082/openapi.json",
+          target: "openapi/demo.yaml",
           filters: {
             tags: [name],
           },
@@ -22,7 +22,6 @@ export default defineConfig(
               path: "src/lib/http/instance.ts",
               name: "customInstance",
             },
-            operationName: ({ operationId }) => operationId!.split("#")[1],
           },
         },
       },
